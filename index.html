@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西门子 FY26 Q4 考核看板</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif; background: #f0f2f5; color: #1a1a2e; min-height: 100vh; }
+.header { background: linear-gradient(135deg, #1a3a4a 0%, #2d6a8a 100%); color: white; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; }
+.header h1 { font-size: 22px; font-weight: 600; letter-spacing: 1px; }
+.header .time { font-size: 13px; opacity: 0.8; }
+
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 24px 32px; }
+.kpi-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
+.kpi-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.kpi-label { font-size: 13px; color: #666; margin-bottom: 8px; font-weight: 500; }
+.kpi-value { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+.kpi-sub { font-size: 12px; color: #999; }
+.kpi-card.ooh .kpi-value { color: #e67e22; }
+.kpi-card.to .kpi-value { color: #2980b9; }
+.kpi-card.target .kpi-value { color: #27ae60; }
+.kpi-card.or-card .kpi-value { color: #8e44ad; }
+
+.section { padding: 0 32px 20px; }
+.panel { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.panel h3 { font-size: 16px; font-weight: 600; color: #1a3a4a; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #f0f2f5; }
+.panel.full { /* full width */ }
+
+.charts-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 32px 32px; }
+.chart-panel { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.chart-panel h3 { font-size: 16px; font-weight: 600; color: #1a3a4a; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #f0f2f5; }
+.chart-panel.full { grid-column: 1 / -1; }
+.chart-wrap { position: relative; height: 350px; }
+.chart-wrap.compare { height: 400px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { padding: 10px 14px; text-align: right; border-bottom: 1px solid #f0f2f5; }
+th { background: #f8f9fa; color: #555; font-weight: 600; font-size: 12px; white-space: nowrap; }
+td:first-child, th:first-child { text-align: left; font-weight: 600; }
+tr:hover { background: #f8f9fa; }
+tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700; }
+
+.rate-high { color: #27ae60; font-weight: 700; }
+.rate-mid { color: #e67e22; font-weight: 700; }
+.rate-low { color: #e74c3c; font-weight: 700; }
+.zero { color: #999; }
+
+.footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
+
+@media (max-width: 1200px) {
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .charts-container { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>西门子 FY26 Q4 考核看板</h1>
+  <div class="time">数据更新: 2026-07-20 10:11:15</div>
+</div>
+
+<!-- KPI 总览 -->
+<div class="kpi-row">
+  <div class="kpi-card target">
+    <div class="kpi-label">本季度 指标（目标）</div>
+    <div class="kpi-value">12393<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">6 个BU</div>
+  </div>
+  <div class="kpi-card ooh">
+    <div class="kpi-label">本季度 OOH（在途）</div>
+    <div class="kpi-value">2934<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">共 5 个BU有待交付</div>
+  </div>
+  <div class="kpi-card to">
+    <div class="kpi-label">本季度 预计完成 TO</div>
+    <div class="kpi-value">8203<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">预计完成率 66.2%</div>
+  </div>
+  <div class="kpi-card or-card">
+    <div class="kpi-label">本季度 OR</div>
+    <div class="kpi-value">3897.0<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">5 个BU有订单</div>
+  </div>
+</div>
+
+<!-- 汇总表（移到上方，紧跟KPI） -->
+<div class="section">
+  <div class="panel">
+    <h3>Q4 集团指标完成情况汇总表</h3>
+    <div style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>BU</th>
+            <th>季度指标 (TO)</th>
+            <th>预计完成 TO</th>
+            <th>完成率</th>
+            <th>在途 OOH</th>
+            <th>OOH占比</th>
+            <th>Q4 OR</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>EP-I</td>
+            <td>119.8万</td>
+            <td>38.3万</td>
+            <td class="rate-low">32.0%</td>
+            <td>17.9万</td>
+            <td>15.0%</td>
+            <td>24.8万</td>
+          </tr>
+          <tr>
+            <td>FA</td>
+            <td>9,933.8万</td>
+            <td>6,436.1万</td>
+            <td class="rate-mid">64.8%</td>
+            <td>2,626.3万</td>
+            <td>26.4%</td>
+            <td>2642.7万</td>
+          </tr>
+          <tr>
+            <td>GMC</td>
+            <td>1,279.8万</td>
+            <td>1,414.3万</td>
+            <td class="rate-high">110.5%</td>
+            <td>256.9万</td>
+            <td>20.1%</td>
+            <td>1136.4万</td>
+          </tr>
+          <tr>
+            <td>PA DCP</td>
+            <td>659.2万</td>
+            <td>229.0万</td>
+            <td class="rate-low">34.7%</td>
+            <td>29.7万</td>
+            <td>4.5%</td>
+            <td>77.5万</td>
+          </tr>
+          <tr>
+            <td>PA AE</td>
+            <td>304.8万</td>
+            <td>56.1万</td>
+            <td class="rate-low">18.4%</td>
+            <td>0.0万</td>
+            <td>0.0%</td>
+            <td><span class="zero">0</span></td>
+          </tr>
+          <tr>
+            <td>EP-E</td>
+            <td>95.7万</td>
+            <td>29.1万</td>
+            <td class="rate-low">30.4%</td>
+            <td>2.8万</td>
+            <td>2.9%</td>
+            <td>15.6万</td>
+          </tr>
+          <tr class="total">
+            <td>合计</td>
+            <td>12,393.0万</td>
+            <td>8,203.0万</td>
+            <td>66.2%</td>
+            <td>2,933.7万</td>
+            <td>23.7%</td>
+            <td>3,897.0万</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 图表区域：指标vs预计完成TO 分组 + OOH + OR -->
+<div class="charts-container">
+  <div class="chart-panel">
+    <h3>指标 vs 预计完成 TO（大BU）</h3>
+    <div class="chart-wrap compare"><canvas id="chartCompareBig"></canvas></div>
+  </div>
+  <div class="chart-panel">
+    <h3>指标 vs 预计完成 TO（小BU）</h3>
+    <div class="chart-wrap compare"><canvas id="chartCompareSmall"></canvas></div>
+  </div>
+</div>
+<div class="charts-container">
+  <div class="chart-panel">
+    <h3>本季度 OOH（在途）按 BU 分布</h3>
+    <div class="chart-wrap"><canvas id="chartOoh"></canvas></div>
+  </div>
+  <div class="chart-panel">
+    <h3>本季度 OR 按 BU 分布</h3>
+    <div class="chart-wrap"><canvas id="chartOr"></canvas></div>
+  </div>
+</div>
+
+<div class="footer">数据源: 西门子年度考核控制表FY2526 · 自动生成</div>
+
+<script>
+const busLabels = ["EP-I", "FA", "GMC", "PA DCP", "PA AE", "EP-E"];
+const oohData = {"EP-I": 179200.4, "FA": 26263289.41, "GMC": 2568721.44, "PA DCP": 297088.4, "PA AE": 0, "EP-E": 28214.65};
+const toData = {"EP-I": 383329.93, "FA": 64361372.77, "GMC": 14143430.67, "PA DCP": 2290380.17, "PA AE": 560886.65, "EP-E": 290989.16};
+const targetData = {"EP-I": 1197750, "FA": 99337587.5, "GMC": 12797500, "PA DCP": 6592500, "PA AE": 3047750, "EP-E": 956500};
+const orData = {"EP-I": 247758.24, "FA": 26426557.86, "GMC": 11364101.22, "PA DCP": 774942.53, "PA AE": 0, "EP-E": 156360.9};
+const colors = ['#3498db','#2ecc71','#e74c3c','#f39c12','#9b59b6','#1abc9c'];
+
+function wan(v) {
+  return v >= 10000 ? (v/10000).toFixed(1) + '万' : v.toLocaleString();
+}
+
+function lighten(c, amt) {
+  const r = parseInt(c.slice(1,3),16), g = parseInt(c.slice(3,5),16), b = parseInt(c.slice(5,7),16);
+  return '#' + Math.min(r+amt,255).toString(16).padStart(2,'0') + Math.min(g+amt,255).toString(16).padStart(2,'0') + Math.min(b+amt,255).toString(16).padStart(2,'0');
+}
+function darken(c, amt) {
+  const r = parseInt(c.slice(1,3),16), g = parseInt(c.slice(3,5),16), b = parseInt(c.slice(5,7),16);
+  return '#' + Math.max(r-amt,0).toString(16).padStart(2,'0') + Math.max(g-amt,0).toString(16).padStart(2,'0') + Math.max(b-amt,0).toString(16).padStart(2,'0');
+}
+
+// 分组：大BU 和 小BU
+const bigBus = ['FA', 'GMC'];
+const smallBus = ['EP-I', 'PA DCP', 'PA AE', 'EP-E'];
+const bigIdx = busLabels.map((b,i) => bigBus.includes(b) ? i : -1).filter(i => i >= 0);
+const smallIdx = busLabels.map((b,i) => smallBus.includes(b) ? i : -1).filter(i => i >= 0);
+const bigColors = bigIdx.map(i => colors[i]);
+const smallColors = smallIdx.map(i => colors[i]);
+
+function makeCompareChart(canvasId, busGroup, idxArr, clrArr) {
+  const tgt2 = idxArr.map(i => targetData[busLabels[i]]);
+  const act2 = idxArr.map(i => toData[busLabels[i]]);
+  const dff2 = idxArr.map(i => Math.max(tgt2[idxArr.indexOf(i)] - act2[idxArr.indexOf(i)], 0));
+  const rtArr = idxArr.map(i => tgt2[idxArr.indexOf(i)] > 0 ? (act2[idxArr.indexOf(i)] / tgt2[idxArr.indexOf(i)] * 100).toFixed(1) : 0);
+  const labels = idxArr.map(i => busLabels[i]);
+
+  new Chart(document.getElementById(canvasId).getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: '预计完成TO',
+          data: act2,
+          backgroundColor: clrArr,
+          borderColor: clrArr.map(c => darken(c, 30)),
+          borderWidth: 1.5,
+          borderRadius: 4,
+          barPercentage: 0.55,
+          datalabels: {
+            anchor: 'end',
+            align: 'start',
+            color: '#fff',
+            font: { size: 12, weight: '700' },
+            formatter: (v, ctx) => wan(v) + '\n' + rtArr[ctx.dataIndex] + '%'
+          }
+        },
+        {
+          label: '差额',
+          data: dff2,
+          backgroundColor: clrArr.map(c => lighten(c, 140)),
+          borderColor: clrArr.map(c => lighten(c, 80)),
+          borderWidth: 1.5,
+          borderRadius: { topLeft: 4, topRight: 4 },
+          barPercentage: 0.55,
+          datalabels: { display: false }
+        }
+      ]
+    },
+    plugins: [ChartDataLabels],
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: true, labels: { usePointStyle: true } },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              if (ctx.dataset.label === '预计完成TO') return '预计完成TO: ' + wan(ctx.raw);
+              return '差额: ' + wan(ctx.raw);
+            }
+          }
+        },
+        datalabels: { display: true }
+      },
+      scales: {
+        x: { stacked: true },
+        y: {
+          stacked: true,
+          beginAtZero: true,
+          ticks: { callback: v => v >= 10000 ? (v/10000).toFixed(0)+'万' : v.toLocaleString() }
+        }
+      }
+    }
+  });
+}
+
+const targetArr = busLabels.map(b => targetData[b]);
+const actualArr = busLabels.map(b => toData[b]);
+makeCompareChart('chartCompareBig', bigBus, bigIdx, bigColors);
+makeCompareChart('chartCompareSmall', smallBus, smallIdx, smallColors);
+
+// OOH 分布
+new Chart(document.getElementById('chartOoh').getContext('2d'), {
+  type: 'bar',
+  data: {
+    labels: busLabels,
+    datasets: [{ label: '在途OOH', data: busLabels.map(b => oohData[b]), backgroundColor: colors.map(c => c + 'cc'), borderColor: colors.map(c => darken(c, 30)), borderWidth: 1.5, borderRadius: 6,
+      datalabels: {
+        anchor: 'end',
+        align: 'top',
+        color: '#555',
+        font: { size: 11, weight: '600' },
+        formatter: v => (v/10000).toFixed(1) + '万'
+      }
+    }]
+  },
+  plugins: [ChartDataLabels],
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => wan(ctx.raw) } }, datalabels: { display: true } },
+    scales: { y: { beginAtZero: true, ticks: { callback: v => v >= 10000 ? (v/10000).toFixed(0)+'万' : v.toLocaleString() } } }
+  }
+});
+
+// OR 分布
+new Chart(document.getElementById('chartOr').getContext('2d'), {
+  type: 'bar',
+  data: {
+    labels: busLabels,
+    datasets: [{ label: 'Q4 OR', data: busLabels.map(b => orData[b]), backgroundColor: colors.map(c => c + 'cc'), borderColor: colors.map(c => darken(c, 30)), borderWidth: 1.5, borderRadius: 6,
+      datalabels: {
+        anchor: 'end',
+        align: 'top',
+        color: '#555',
+        font: { size: 11, weight: '600' },
+        formatter: v => (v/10000).toFixed(1) + '万'
+      }
+    }]
+  },
+  plugins: [ChartDataLabels],
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => wan(ctx.raw) } }, datalabels: { display: true } },
+    scales: { y: { beginAtZero: true, ticks: { callback: v => v >= 10000 ? (v/10000).toFixed(0)+'万' : v.toLocaleString() } } }
+  }
+});
+</script>
+
+</body>
+</html>
