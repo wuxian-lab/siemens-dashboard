@@ -60,7 +60,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
 <div class="header">
   <h1>西门子 FY26 Q4 考核看板</h1>
-  <div class="time">数据更新: 2026-08-20 09:05:09</div>
+  <div class="time">数据更新: 2026-08-21 08:51:28</div>
 </div>
 
 <!-- KPI 总览 -->
@@ -72,13 +72,13 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
   </div>
   <div class="kpi-card ooh">
     <div class="kpi-label">本季度 OOH（在途）</div>
-    <div class="kpi-value">1427<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-value">1405<span style="font-size:16px"> 万</span></div>
     <div class="kpi-sub">共 6 个BU有待交付</div>
   </div>
   <div class="kpi-card to">
     <div class="kpi-label">本季度 预计完成 TO</div>
-    <div class="kpi-value">10623<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">预计完成率 85.7%</div>
+    <div class="kpi-value">10839<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">预计完成率 87.5%</div>
   </div>
   <div class="kpi-card or-card">
     <div class="kpi-label">本季度 OR</div>
@@ -110,31 +110,31 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
           <tr>
             <td>EP-I</td>
             <td>119.8万</td>
-            <td>54.6万</td>
-            <td>0.2万</td>
-            <td>54.7万</td>
-            <td class="rate-low">45.7%</td>
-            <td>0.1%</td>
+            <td>58.4万</td>
+            <td>0.8万</td>
+            <td>59.2万</td>
+            <td class="rate-low">49.4%</td>
+            <td>0.7%</td>
             <td>46.1万</td>
           </tr>
           <tr>
             <td>FA</td>
             <td>9,933.8万</td>
-            <td>6,903.3万</td>
-            <td>1,102.4万</td>
-            <td>8,005.7万</td>
-            <td class="rate-mid">80.6%</td>
-            <td>11.1%</td>
+            <td>7,124.5万</td>
+            <td>1,090.5万</td>
+            <td>8,215.0万</td>
+            <td class="rate-mid">82.7%</td>
+            <td>11.0%</td>
             <td>5038.7万</td>
           </tr>
           <tr>
             <td>GMC</td>
             <td>1,279.8万</td>
-            <td>1,728.1万</td>
-            <td>249.8万</td>
-            <td>1,977.9万</td>
+            <td>1,740.6万</td>
+            <td>238.0万</td>
+            <td>1,978.7万</td>
             <td class="rate-high">154.6%</td>
-            <td>19.5%</td>
+            <td>18.6%</td>
             <td>1374.6万</td>
           </tr>
           <tr>
@@ -160,21 +160,21 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
           <tr>
             <td>EP-E</td>
             <td>95.7万</td>
-            <td>49.1万</td>
-            <td>0.3万</td>
-            <td>49.4万</td>
-            <td class="rate-low">51.7%</td>
-            <td>0.3%</td>
+            <td>49.3万</td>
+            <td>1.1万</td>
+            <td>50.4万</td>
+            <td class="rate-low">52.7%</td>
+            <td>1.1%</td>
             <td>28.1万</td>
           </tr>
           <tr class="total">
             <td>合计</td>
             <td>12,393.0万</td>
-            <td>9,196.3万</td>
-            <td>1,427.0万</td>
-            <td>10,623.3万</td>
-            <td>85.7%</td>
-            <td>11.5%</td>
+            <td>9,434.1万</td>
+            <td>1,404.8万</td>
+            <td>10,838.9万</td>
+            <td>87.5%</td>
+            <td>11.3%</td>
             <td>6,870.5万</td>
           </tr>
         </tbody>
@@ -209,8 +209,8 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
 <script>
 const busLabels = ["EP-I", "FA", "GMC", "PA DCP", "PA AE", "EP-E"];
-const oohData = {"EP-I": 1561.35, "FA": 11023676.03, "GMC": 2498373.78, "PA DCP": 159499.93, "PA AE": 584040.99, "EP-E": 3265.54};
-const toData = {"EP-I": 547428.52, "FA": 80056742.69, "GMC": 19779051.47, "PA DCP": 2728434.77, "PA AE": 2627063.49, "EP-E": 494209.87};
+const oohData = {"EP-I": 7911, "FA": 10905490.62, "GMC": 2380377.37, "PA DCP": 159499.93, "PA AE": 584040.99, "EP-E": 10779.86};
+const toData = {"EP-I": 592159.37, "FA": 82150346.73, "GMC": 19786769.66, "PA DCP": 2728434.77, "PA AE": 2627063.49, "EP-E": 504138.66};
 const targetData = {"EP-I": 1197750, "FA": 99337587.5, "GMC": 12797500, "PA DCP": 6592500, "PA AE": 3047750, "EP-E": 956500};
 const orData = {"EP-I": 461082.48, "FA": 50387312.11, "GMC": 13746076.18, "PA DCP": 1273627.45, "PA AE": 2556638.54, "EP-E": 280737.41};
 const colors = ['#3498db','#2ecc71','#e74c3c','#f39c12','#9b59b6','#1abc9c'];
