@@ -13,7 +13,7 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 .header h1 { font-size: 22px; font-weight: 600; letter-spacing: 1px; }
 .header .time { font-size: 13px; opacity: 0.8; }
 
-.kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 24px 32px; }
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 24px 32px; }
 .kpi-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
 .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
 .kpi-label { font-size: 13px; color: #666; margin-bottom: 8px; font-weight: 500; }
@@ -23,7 +23,9 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 .kpi-card.to .kpi-value { color: #2980b9; }
 .kpi-card.target .kpi-value { color: #27ae60; }
 .kpi-card.or-card .kpi-value { color: #8e44ad; }
+.kpi-card.year-to { grid-column: span 2; }
 .kpi-card.year-to .kpi-value { color: #1abc9c; }
+.kpi-card.year-rate { grid-column: span 2; }
 .kpi-card.year-rate .kpi-value { color: #34495e; }
 .kpi-card.highlight { border: 2px solid #16a085; background: linear-gradient(135deg, #eafaf6 0%, #ffffff 100%); box-shadow: 0 4px 20px rgba(26,188,156,0.18); }
 .kpi-card.highlight .kpi-label { color: #16a085; font-weight: 700; }
@@ -57,7 +59,12 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
 @media (max-width: 1200px) {
   .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .kpi-card.year-to, .kpi-card.year-rate { grid-column: span 2; }
   .charts-container { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .kpi-row { grid-template-columns: 1fr; }
+  .kpi-card.year-to, .kpi-card.year-rate { grid-column: span 1; }
 }
 </style>
 </head>
@@ -65,7 +72,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
 <div class="header">
   <h1>西门子 FY26 Q4 考核看板</h1>
-  <div class="time">数据更新: 2026-09-03 16:27:36</div>
+  <div class="time">数据更新: 2026-09-03 16:37:46</div>
 </div>
 
 <!-- KPI 总览（全年维度在前，结论先行；全年进度为高亮头卡） -->
