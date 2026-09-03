@@ -25,6 +25,9 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 .kpi-card.or-card .kpi-value { color: #8e44ad; }
 .kpi-card.year-to .kpi-value { color: #1abc9c; }
 .kpi-card.year-rate .kpi-value { color: #34495e; }
+.kpi-card.highlight { border: 2px solid #16a085; background: linear-gradient(135deg, #eafaf6 0%, #ffffff 100%); box-shadow: 0 4px 20px rgba(26,188,156,0.18); }
+.kpi-card.highlight .kpi-label { color: #16a085; font-weight: 700; }
+.kpi-card.highlight .kpi-value { font-size: 34px; color: #16a085; }
 
 .section { padding: 0 32px 20px; }
 .panel { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
@@ -62,40 +65,40 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
 <div class="header">
   <h1>西门子 FY26 Q4 考核看板</h1>
-  <div class="time">数据更新: 2026-09-03 16:02:04</div>
+  <div class="time">数据更新: 2026-09-03 16:27:36</div>
 </div>
 
-<!-- KPI 总览 -->
+<!-- KPI 总览（全年维度在前，结论先行；全年进度为高亮头卡） -->
 <div class="kpi-row">
-  <div class="kpi-card target">
-    <div class="kpi-label">本季度 指标（目标）</div>
-    <div class="kpi-value">12393<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">6 个BU</div>
-  </div>
-  <div class="kpi-card ooh">
-    <div class="kpi-label">本季度 OOH（在途）</div>
-    <div class="kpi-value">946<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">共 6 个BU有待交付</div>
-  </div>
-  <div class="kpi-card to">
-    <div class="kpi-label">本季度 预计完成 TO</div>
-    <div class="kpi-value">11827<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">预计完成率 95.4%</div>
-  </div>
-  <div class="kpi-card or-card">
-    <div class="kpi-label">本季度 OR</div>
-    <div class="kpi-value">9018.5<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">6 个BU有订单</div>
+  <div class="kpi-card year-rate highlight">
+    <div class="kpi-label">★ 全年 指标进度</div>
+    <div class="kpi-value">105.7<span style="font-size:16px"> %</span></div>
+    <div class="kpi-sub">完成TO 52375 万 / 目标 49572 万</div>
   </div>
   <div class="kpi-card year-to">
     <div class="kpi-label">全年 完成 TO</div>
     <div class="kpi-value">52375<span style="font-size:16px"> 万</span></div>
     <div class="kpi-sub">截至当前累计（含Q1-Q4已完）</div>
   </div>
-  <div class="kpi-card year-rate">
-    <div class="kpi-label">全年 指标进度</div>
-    <div class="kpi-value">105.7<span style="font-size:16px"> %</span></div>
-    <div class="kpi-sub">全年指标目标 49572 万</div>
+  <div class="kpi-card target">
+    <div class="kpi-label">本季度 指标（目标）</div>
+    <div class="kpi-value">12393<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">6 个BU</div>
+  </div>
+  <div class="kpi-card to">
+    <div class="kpi-label">本季度 预计完成 TO</div>
+    <div class="kpi-value">11827<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">预计完成率 95.4%</div>
+  </div>
+  <div class="kpi-card ooh">
+    <div class="kpi-label">本季度 OOH（在途）</div>
+    <div class="kpi-value">946<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">共 6 个BU有待交付</div>
+  </div>
+  <div class="kpi-card or-card">
+    <div class="kpi-label">本季度 OR</div>
+    <div class="kpi-value">9018.5<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">6 个BU有订单</div>
   </div>
 </div>
 
