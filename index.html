@@ -1,110 +1,206 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>西门子 FY26 全年+本季度考核看板</title>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+
 <style>
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif; background: #f0f2f5; color: #1a1a2e; min-height: 100vh; }
+
 .header { background: linear-gradient(135deg, #1a3a4a 0%, #2d6a8a 100%); color: white; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; }
+
 .header h1 { font-size: 22px; font-weight: 600; letter-spacing: 1px; }
+
 .header .time { font-size: 13px; opacity: 0.8; }
 
+
+
 .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 24px 32px; }
+
 .kpi-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
+
 .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+
 .kpi-label { font-size: 13px; color: #666; margin-bottom: 8px; font-weight: 500; }
+
 .kpi-value { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+
 .kpi-sub { font-size: 12px; color: #999; }
+
 .kpi-card.ooh .kpi-value { color: #e67e22; }
+
 .kpi-card.to .kpi-value { color: #2980b9; }
+
 .kpi-card.target .kpi-value { color: #27ae60; }
+
 .kpi-card.or-card .kpi-value { color: #8e44ad; }
+
 .kpi-card.year-to { grid-column: span 2; }
+
 .kpi-card.year-to .kpi-value { color: #1abc9c; }
+
 .kpi-card.year-rate { grid-column: span 2; }
+
 .kpi-card.year-rate .kpi-value { color: #34495e; }
+
 .kpi-card.highlight { border: 2px solid #16a085; background: linear-gradient(135deg, #eafaf6 0%, #ffffff 100%); box-shadow: 0 4px 20px rgba(26,188,156,0.18); }
+
 .kpi-card.highlight .kpi-label { color: #16a085; font-weight: 700; }
+
 .kpi-card.highlight .kpi-value { font-size: 34px; color: #16a085; }
 
+
+
 .quarter-breakdown { padding: 0 32px 20px; }
+
 .quarter-breakdown .panel { /* 复用 panel 样式 */ }
+
 .quarter-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
 .q-card { display: flex; gap: 14px; align-items: stretch; background: #f8fafc; border-radius: 10px; padding: 16px 18px; border-left: 4px solid #16a085; }
+
 .q-card .q-main { flex: 1; min-width: 0; }
+
 .q-card .q-name { font-size: 14px; font-weight: 600; color: #1a3a4a; margin-bottom: 8px; letter-spacing: 1px; }
+
 .q-card .q-to { font-size: 22px; font-weight: 700; color: #1a3a4a; }
+
 .q-card .q-to span { font-size: 13px; color: #888; font-weight: 400; margin-left: 2px; }
+
 .q-rate { margin-top: 10px; font-size: 13px; }
+
 .q-bar { height: 8px; background: #e8edf0; border-radius: 4px; margin-top: 6px; overflow: hidden; }
+
 .q-bar > i { display: block; height: 100%; border-radius: 4px; }
+
 .q-card .q-bu { width: 128px; flex-shrink: 0; border-left: 1px dashed #d8e0e5; padding-left: 12px; }
+
 .q-card .q-bu-cap { font-size: 11px; color: #9aa7b0; margin-bottom: 4px; letter-spacing: 1px; }
+
 .q-card .bu-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; line-height: 1.75; }
+
 .q-card .bu-name { color: #5a6b75; }
+
 .q-card .bu-rate { font-weight: 700; }
 
+
+
 .section { padding: 0 32px 20px; }
+
 .panel { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+
 .panel h3 { font-size: 16px; font-weight: 600; color: #1a3a4a; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #f0f2f5; }
+
 .panel.full { /* full width */ }
 
+
+
 .charts-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 32px 32px; }
+
 .chart-panel { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+
 .chart-panel h3 { font-size: 16px; font-weight: 600; color: #1a3a4a; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #f0f2f5; }
+
 .chart-panel.full { grid-column: 1 / -1; }
+
 .chart-wrap { position: relative; height: 350px; }
+
 .chart-wrap.compare { height: 400px; }
 
+
+
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
+
 th, td { padding: 10px 14px; text-align: right; border-bottom: 1px solid #f0f2f5; }
+
 th { background: #f8f9fa; color: #555; font-weight: 600; font-size: 12px; white-space: nowrap; }
+
 td:first-child, th:first-child { text-align: left; font-weight: 600; }
+
 tr:hover { background: #f8f9fa; }
+
 tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700; }
 
+
+
 .rate-high { color: #27ae60; font-weight: 700; }
+
 .rate-mid { color: #e67e22; font-weight: 700; }
+
 .rate-low { color: #e74c3c; font-weight: 700; }
+
 .zero { color: #999; }
+
+
 
 .footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
 
+
+
 @media (max-width: 1200px) {
+
   .kpi-row { grid-template-columns: repeat(2, 1fr); }
+
   .kpi-card.year-to, .kpi-card.year-rate { grid-column: span 2; }
+
   .quarter-grid { grid-template-columns: repeat(2, 1fr); }
+
   .charts-container { grid-template-columns: 1fr; }
+
 }
+
 @media (max-width: 700px) {
+
   .kpi-row { grid-template-columns: 1fr; }
+
   .kpi-card.year-to, .kpi-card.year-rate { grid-column: span 1; }
+
   .quarter-grid { grid-template-columns: 1fr; }
+
 }
+
 </style>
+
 </head>
+
 <body>
 
+
+
 <div class="header">
+
   <h1>西门子 FY26 全年+本季度考核看板</h1>
-  <div class="time">数据更新: 2026-09-22 08:53:34</div>
+
+  <div class="time">数据更新: 2026-09-23 09:49:30</div>
+
 </div>
+
+
 
 <!-- KPI 总览（全年维度在前，结论先行；全年进度为高亮头卡） -->
 <div class="kpi-row">
   <div class="kpi-card year-to">
     <div class="kpi-label">全年 完成 TO</div>
-    <div class="kpi-value">54576<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-value">54590<span style="font-size:16px"> 万</span></div>
     <div class="kpi-sub">截至当前累计</div>
   </div>
   <div class="kpi-card year-rate highlight">
     <div class="kpi-label">★ 全年 指标进度</div>
     <div class="kpi-value">110.1<span style="font-size:16px"> %</span></div>
-    <div class="kpi-sub">完成TO 54576 万 / 目标 49571 万</div>
+    <div class="kpi-sub">完成TO 54590 万 / 目标 49571 万</div>
   </div>
   <div class="kpi-card target">
     <div class="kpi-label">本季度 指标（目标）</div>
@@ -113,12 +209,12 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
   </div>
   <div class="kpi-card to">
     <div class="kpi-label">本季度 预计完成 TO</div>
-    <div class="kpi-value">13272<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">预计完成率 107.1%</div>
+    <div class="kpi-value">13282<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">预计完成率 107.2%</div>
   </div>
   <div class="kpi-card ooh">
     <div class="kpi-label">本季度 OOH（在途）</div>
-    <div class="kpi-value">190<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-value">185<span style="font-size:16px"> 万</span></div>
     <div class="kpi-sub">共 2 个BU有待交付</div>
   </div>
   <div class="kpi-card or-card">
@@ -127,13 +223,11 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
     <div class="kpi-sub">6 个BU有订单</div>
   </div>
 </div>
-
 <!-- 全年分季度完成情况（独立分区，头卡保持不动） -->
 <div class="quarter-breakdown">
   <div class="panel">
     <h3>全年分季度完成情况（完成 TO / 完成率）</h3>
     <div class="quarter-grid">
-
       <div class="q-card">
         <div class="q-main">
           <div class="q-name">Q1</div>
@@ -144,8 +238,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
           </div>
         </div>
         <div class="q-bu">
-<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-high">208.1%</span></div><div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-high">100.2%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-high">176.0%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-mid">81.7%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-high">185.2%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-high">149.2%</span></div>
-        </div>
+<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-high">208.1%</span></div><div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-high">100.2%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-high">176.0%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-mid">81.7%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-high">185.2%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-high">149.2%</span></div>        </div>
       </div>
       <div class="q-card">
         <div class="q-main">
@@ -157,8 +250,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
           </div>
         </div>
         <div class="q-bu">
-<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-high">116.8%</span></div><div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-high">104.3%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-high">175.1%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-mid">91.0%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-high">241.2%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-high">133.8%</span></div>
-        </div>
+<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-high">116.8%</span></div><div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-high">104.3%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-high">175.1%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-mid">91.0%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-high">241.2%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-high">133.8%</span></div>        </div>
       </div>
       <div class="q-card">
         <div class="q-main">
@@ -170,92 +262,109 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
           </div>
         </div>
         <div class="q-bu">
-<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-high">124.6%</span></div><div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-high">103.6%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-high">168.9%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-mid">86.9%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-high">103.2%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-high">102.3%</span></div>
-        </div>
+<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-high">124.6%</span></div><div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-high">103.6%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-high">168.9%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-mid">86.9%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-high">103.2%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-high">102.3%</span></div>        </div>
       </div>
       <div class="q-card">
         <div class="q-main">
           <div class="q-name">Q4</div>
-          <div class="q-to">13,082<span> 万</span></div>
+          <div class="q-to">13,096<span> 万</span></div>
           <div class="q-rate">
-            <span class="rate-high">完成率 105.6%</span>
+            <span class="rate-high">完成率 105.7%</span>
             <div class="q-bar"><i style="width:100.0%; background:#27ae60"></i></div>
           </div>
         </div>
         <div class="q-bu">
-<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-low">57.2%</span></div><div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-mid">99.4%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-high">184.4%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-low">54.2%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-high">121.8%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-low">50.3%</span></div>
-        </div>
+<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-low">57.4%</span></div><div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-mid">99.5%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-high">184.9%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-low">54.2%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-high">121.8%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-low">50.7%</span></div>        </div>
       </div>
     </div>
   </div>
 </div>
-
 <!-- 汇总表（移到上方，紧跟KPI） -->
-<div class="section">
-  <div class="panel">
-    <h3>集团指标完成情况汇总表（全年 + 本季度）</h3>
-    <div style="overflow-x:auto">
-      <table>
-        <thead>
-          <tr>
-            <th>BU</th>
-            <th>全年指标</th>
-            <th>全年完成 TO</th>
-            <th>全年完成率</th>
-            <th>季度指标 (TO)</th>
-            <th>已完成TO</th>
-            <th>在途 OOH</th>
-            <th>预计完成 TO</th>
-            <th>预计完成率</th>
-            <th>OOH占比</th>
-            <th>Q4 OR</th>
-          </tr>
-        </thead>
-        <tbody>
 
+<div class="section">
+
+  <div class="panel">
+
+    <h3>集团指标完成情况汇总表（全年 + 本季度）</h3>
+
+    <div style="overflow-x:auto">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>BU</th>
+
+            <th>全年指标</th>
+
+            <th>全年完成 TO</th>
+
+            <th>全年完成率</th>
+
+            <th>季度指标 (TO)</th>
+
+            <th>已完成TO</th>
+
+            <th>在途 OOH</th>
+
+            <th>预计完成 TO</th>
+
+            <th>预计完成率</th>
+
+            <th>OOH占比</th>
+
+            <th>Q4 OR</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
         <tr>
           <td>EP-I</td>
           <td>479.1万</td>
-          <td>607.0万</td>
+          <td>607.3万</td>
           <td class="rate-high">126.7%</td>
           <td>119.8万</td>
-          <td>68.5万</td>
+          <td>68.8万</td>
           <td>0.0万</td>
-          <td>68.5万</td>
-          <td class="rate-low">57.2%</td>
+          <td>68.8万</td>
+          <td class="rate-low">57.4%</td>
           <td>0.0%</td>
           <td>61.1万</td>
         </tr>
         <tr>
           <td>FA</td>
-          <td>39,735.0万</td>
-          <td>40,483.2万</td>
+          <td>39735.0万</td>
+          <td>40490.5万</td>
           <td class="rate-high">101.9%</td>
-          <td>9,933.8万</td>
-          <td>9,877.3万</td>
+          <td>9933.8万</td>
+          <td>9884.6万</td>
           <td>165.2万</td>
-          <td>10,042.5万</td>
-          <td class="rate-high">101.1%</td>
-          <td>1.7%</td>
+          <td>10049.8万</td>
+          <td class="rate-high">101.2%</td>
+          <td>1.6%</td>
           <td>7682.6万</td>
         </tr>
         <tr>
           <td>GMC</td>
-          <td>5,119.0万</td>
-          <td>9,014.8万</td>
-          <td class="rate-high">176.1%</td>
-          <td>1,279.8万</td>
-          <td>2,359.9万</td>
-          <td>24.6万</td>
-          <td>2,384.6万</td>
-          <td class="rate-high">186.3%</td>
-          <td>1.9%</td>
+          <td>5119.0万</td>
+          <td>9020.7万</td>
+          <td class="rate-high">176.2%</td>
+          <td>1279.8万</td>
+          <td>2365.8万</td>
+          <td>20.1万</td>
+          <td>2385.9万</td>
+          <td class="rate-high">186.4%</td>
+          <td>0.8%</td>
           <td>2050.0万</td>
         </tr>
         <tr>
           <td>PA DCP</td>
-          <td>2,636.6万</td>
-          <td>2,069.0万</td>
+          <td>2636.6万</td>
+          <td>2069.0万</td>
           <td class="rate-low">78.5%</td>
           <td>659.1万</td>
           <td>357.3万</td>
@@ -267,8 +376,8 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
         </tr>
         <tr>
           <td>PA AE</td>
-          <td>1,219.1万</td>
-          <td>1,985.5万</td>
+          <td>1219.1万</td>
+          <td>1985.5万</td>
           <td class="rate-high">162.9%</td>
           <td>304.8万</td>
           <td>371.3万</td>
@@ -281,209 +390,390 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
         <tr>
           <td>EP-E</td>
           <td>382.6万</td>
-          <td>416.7万</td>
-          <td class="rate-high">108.9%</td>
+          <td>417.0万</td>
+          <td class="rate-high">109.0%</td>
           <td>95.7万</td>
-          <td>48.1万</td>
+          <td>48.5万</td>
           <td>0.0万</td>
-          <td>48.1万</td>
-          <td class="rate-low">50.3%</td>
+          <td>48.5万</td>
+          <td class="rate-low">50.7%</td>
           <td>0.0%</td>
           <td>35.5万</td>
         </tr>
           <tr class="total">
             <td>合计</td>
-            <td>49,571.4万</td>
-            <td>54,576.1万</td>
+            <td>49571.4万</td>
+            <td>54589.9万</td>
             <td>110.1%</td>
-            <td>12,392.9万</td>
-            <td>13,082.5万</td>
-            <td>189.8万</td>
-            <td>13,272.3万</td>
-            <td>107.1%</td>
-            <td>1.5%</td>
-            <td>10,444.3万</td>
-          </tr>
-        </tbody>
+            <td>12392.9万</td>
+            <td>13096.3万</td>
+            <td>185.3万</td>
+            <td>13281.6万</td>
+            <td>107.2%</td>
+            <td>1.4%</td>
+            <td>10444.3万</td>
+          </tr></tbody>
+
       </table>
+
     </div>
+
   </div>
+
 </div>
 
+
+
 <!-- 图表区域：指标vs预计完成TO 分组 + OOH + OR -->
+
 <div class="charts-container">
+
   <div class="chart-panel">
+
     <h3>本季度指标 vs 预计完成 TO（大BU）</h3>
+
     <div class="chart-wrap compare"><canvas id="chartCompareBig"></canvas></div>
+
   </div>
+
   <div class="chart-panel">
+
     <h3>本季度指标 vs 预计完成 TO（小BU）</h3>
+
     <div class="chart-wrap compare"><canvas id="chartCompareSmall"></canvas></div>
+
   </div>
+
 </div>
+
 <div class="charts-container">
+
   <div class="chart-panel">
+
     <h3>本季度 OOH（在途）按 BU 分布</h3>
+
     <div class="chart-wrap"><canvas id="chartOoh"></canvas></div>
+
   </div>
+
   <div class="chart-panel">
+
     <h3>本季度 OR 按 BU 分布</h3>
+
     <div class="chart-wrap"><canvas id="chartOr"></canvas></div>
+
   </div>
+
 </div>
+
+
 
 <div class="footer">数据源: 西门子年度考核控制表FY2526 · 自动生成</div>
 
+
+
 <script>
+
 const busLabels = ["EP-I", "FA", "GMC", "PA DCP", "PA AE", "EP-E"];
-const oohData = {"EP-I": 0, "FA": 1651673.6, "GMC": 246338.45, "PA DCP": 0, "PA AE": 0, "EP-E": 0};
-const toData = {"EP-I": 684853.93, "FA": 100424993.88, "GMC": 23845643.68, "PA DCP": 3572745.12, "PA AE": 3713171.56, "EP-E": 481342.79};
-const targetData = {"EP-I": 1197750, "FA": 99337587.5, "GMC": 12797500, "PA DCP": 6591500, "PA AE": 3047750, "EP-E": 956500};
+
+const oohData = {"EP-I": 0, "FA": 1651673.60, "GMC": 200982.71, "PA DCP": 0, "PA AE": 0, "EP-E": 0};
+
+const toData = {"EP-I": 687689.07, "FA": 100497740.38, "GMC": 23859397.28, "PA DCP": 3572745.12, "PA AE": 3713171.56, "EP-E": 484758.16};
+
+const targetData = {"EP-I": 1197750.00, "FA": 99337587.50, "GMC": 12797500.00, "PA DCP": 6591500.00, "PA AE": 3047750.00, "EP-E": 956500.00};
+
 const orData = {"EP-I": 611416.17, "FA": 76826404.16, "GMC": 20499945.56, "PA DCP": 2642254.58, "PA AE": 3507927.91, "EP-E": 355236.51};
+
 const colors = ['#3498db','#2ecc71','#e74c3c','#f39c12','#9b59b6','#1abc9c'];
 
+
+
 function wan(v) {
+
   return v >= 10000 ? (v/10000).toFixed(1) + '万' : v.toLocaleString();
+
 }
+
+
 
 function lighten(c, amt) {
+
   const r = parseInt(c.slice(1,3),16), g = parseInt(c.slice(3,5),16), b = parseInt(c.slice(5,7),16);
+
   return '#' + Math.min(r+amt,255).toString(16).padStart(2,'0') + Math.min(g+amt,255).toString(16).padStart(2,'0') + Math.min(b+amt,255).toString(16).padStart(2,'0');
+
 }
+
 function darken(c, amt) {
+
   const r = parseInt(c.slice(1,3),16), g = parseInt(c.slice(3,5),16), b = parseInt(c.slice(5,7),16);
+
   return '#' + Math.max(r-amt,0).toString(16).padStart(2,'0') + Math.max(g-amt,0).toString(16).padStart(2,'0') + Math.max(b-amt,0).toString(16).padStart(2,'0');
+
 }
+
+
 
 // 分组：大BU 和 小BU
+
 const bigBus = ['FA', 'GMC'];
+
 const smallBus = ['EP-I', 'PA DCP', 'PA AE', 'EP-E'];
+
 const bigIdx = busLabels.map((b,i) => bigBus.includes(b) ? i : -1).filter(i => i >= 0);
+
 const smallIdx = busLabels.map((b,i) => smallBus.includes(b) ? i : -1).filter(i => i >= 0);
+
 const bigColors = bigIdx.map(i => colors[i]);
+
 const smallColors = smallIdx.map(i => colors[i]);
 
+
+
 function makeCompareChart(canvasId, busGroup, idxArr, clrArr) {
+
   const tgt2 = idxArr.map(i => targetData[busLabels[i]]);
+
   const act2 = idxArr.map(i => toData[busLabels[i]]);
+
   const dff2 = idxArr.map(i => Math.max(tgt2[idxArr.indexOf(i)] - act2[idxArr.indexOf(i)], 0));
+
   const rtArr = idxArr.map(i => tgt2[idxArr.indexOf(i)] > 0 ? (act2[idxArr.indexOf(i)] / tgt2[idxArr.indexOf(i)] * 100).toFixed(1) : 0);
+
   const labels = idxArr.map(i => busLabels[i]);
 
+
+
   new Chart(document.getElementById(canvasId).getContext('2d'), {
+
     type: 'bar',
+
     data: {
+
       labels: labels,
+
       datasets: [
+
         {
+
           label: '预计完成TO',
+
           data: act2,
+
           backgroundColor: clrArr,
+
           borderColor: clrArr.map(c => darken(c, 30)),
+
           borderWidth: 1.5,
+
           borderRadius: 4,
+
           barPercentage: 0.55,
+
           datalabels: {
+
             anchor: 'end',
+
             align: 'start',
+
             color: '#fff',
+
             font: { size: 12, weight: '700' },
+
             formatter: (v, ctx) => wan(v) + '\n' + rtArr[ctx.dataIndex] + '%'
+
           }
+
         },
+
         {
+
           label: '差额',
+
           data: dff2,
+
           backgroundColor: clrArr.map(c => lighten(c, 140)),
+
           borderColor: clrArr.map(c => lighten(c, 80)),
+
           borderWidth: 1.5,
+
           borderRadius: { topLeft: 4, topRight: 4 },
+
           barPercentage: 0.55,
+
           datalabels: { display: false }
+
         }
+
       ]
+
     },
+
     plugins: [ChartDataLabels],
+
     options: {
+
       responsive: true,
+
       maintainAspectRatio: false,
+
       plugins: {
+
         legend: { display: true, labels: { usePointStyle: true } },
+
         tooltip: {
+
           callbacks: {
+
             label: ctx => {
+
               if (ctx.dataset.label === '预计完成TO') return '预计完成TO: ' + wan(ctx.raw);
+
               return '差额: ' + wan(ctx.raw);
+
             }
+
           }
+
         },
+
         datalabels: { display: true }
+
       },
+
       scales: {
+
         x: { stacked: true },
+
         y: {
+
           stacked: true,
+
           beginAtZero: true,
+
           ticks: { callback: v => v >= 10000 ? (v/10000).toFixed(0)+'万' : v.toLocaleString() }
+
         }
+
       }
+
     }
+
   });
+
 }
 
+
+
 const targetArr = busLabels.map(b => targetData[b]);
+
 const actualArr = busLabels.map(b => toData[b]);
+
 makeCompareChart('chartCompareBig', bigBus, bigIdx, bigColors);
+
 makeCompareChart('chartCompareSmall', smallBus, smallIdx, smallColors);
 
+
+
 // OOH 分布
+
 new Chart(document.getElementById('chartOoh').getContext('2d'), {
+
   type: 'bar',
+
   data: {
+
     labels: busLabels,
+
     datasets: [{ label: '在途OOH', data: busLabels.map(b => oohData[b]), backgroundColor: colors.map(c => c + 'cc'), borderColor: colors.map(c => darken(c, 30)), borderWidth: 1.5, borderRadius: 6,
+
       datalabels: {
+
         anchor: 'end',
+
         align: 'top',
+
         color: '#555',
+
         font: { size: 11, weight: '600' },
+
         formatter: v => (v/10000).toFixed(1) + '万'
+
       }
+
     }]
+
   },
+
   plugins: [ChartDataLabels],
+
   options: {
+
     responsive: true,
+
     maintainAspectRatio: false,
+
     plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => wan(ctx.raw) } }, datalabels: { display: true } },
+
     scales: { y: { beginAtZero: true, ticks: { callback: v => v >= 10000 ? (v/10000).toFixed(0)+'万' : v.toLocaleString() } } }
+
   }
+
 });
+
+
 
 // OR 分布
+
 new Chart(document.getElementById('chartOr').getContext('2d'), {
+
   type: 'bar',
+
   data: {
+
     labels: busLabels,
+
     datasets: [{ label: 'Q4 OR', data: busLabels.map(b => orData[b]), backgroundColor: colors.map(c => c + 'cc'), borderColor: colors.map(c => darken(c, 30)), borderWidth: 1.5, borderRadius: 6,
+
       datalabels: {
+
         anchor: 'end',
+
         align: 'top',
+
         color: '#555',
+
         font: { size: 11, weight: '600' },
+
         formatter: v => (v/10000).toFixed(1) + '万'
+
       }
+
     }]
+
   },
+
   plugins: [ChartDataLabels],
+
   options: {
+
     responsive: true,
+
     maintainAspectRatio: false,
+
     plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => wan(ctx.raw) } }, datalabels: { display: true } },
+
     scales: { y: { beginAtZero: true, ticks: { callback: v => v >= 10000 ? (v/10000).toFixed(0)+'万' : v.toLocaleString() } } }
+
   }
+
 });
+
 </script>
 
+
+
 </body>
+
 </html>
