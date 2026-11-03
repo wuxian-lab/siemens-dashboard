@@ -172,6 +172,11 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
 }
 
+.kpi-group { padding: 0 0; }
+.kpi-group-title { font-size: 15px; font-weight: 700; color: #2c3e50; margin: 20px 32px 0;
+  border-left: 4px solid #3498db; padding-left: 10px; line-height: 1.4; }
+.kpi-group-title.grp-ep { border-left-color: #e67e22; }
+.kpi-group .kpi-row { padding-top: 12px; padding-bottom: 6px; }
 </style>
 
 </head>
@@ -184,43 +189,81 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
   <h1>西门子 FY27 全年+本季度考核看板</h1>
 
-  <div class="time">数据更新: 2026-11-03 17:07:22</div>
+  <div class="time">数据更新: 2026-11-03 17:22:46</div>
 
 </div>
 
 
 
 <!-- KPI 总览（全年维度在前，结论先行；全年进度为高亮头卡） -->
-<div class="kpi-row">
+<div class="kpi-group">
+  <div class="kpi-group-title grp-nep">总体指标（非EP）· FA + GMC + PA DCP + PA AE</div>
+  <div class="kpi-row">
   <div class="kpi-card year-to">
     <div class="kpi-label">全年 完成 TO</div>
-    <div class="kpi-value">5,559<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-value">5,475<span style="font-size:16px"> 万</span></div>
     <div class="kpi-sub">截至当前累计</div>
   </div>
   <div class="kpi-card year-rate highlight">
     <div class="kpi-label">★ 全年 指标进度</div>
     <div class="kpi-value">9.1<span style="font-size:16px"> %</span></div>
-    <div class="kpi-sub">完成TO 5,559 万 / 目标 61,146 万</div>
+    <div class="kpi-sub">完成TO 5,475 万 / 目标 59,988 万</div>
   </div>
   <div class="kpi-card target">
     <div class="kpi-label">本季度 指标（目标）</div>
-    <div class="kpi-value">15,287<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">6 个BU</div>
+    <div class="kpi-value">14,997<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">Q1</div>
   </div>
   <div class="kpi-card to">
     <div class="kpi-label">本季度 已完成 TO</div>
-    <div class="kpi-value">5,559<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-value">5,475<span style="font-size:16px"> 万</span></div>
     <div class="kpi-sub">实际完成（截至当前）</div>
   </div>
   <div class="kpi-card ooh">
     <div class="kpi-label">本季度 OOH（在途）</div>
-    <div class="kpi-value">4,541<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">共 6 个BU有待交付</div>
+    <div class="kpi-value">4,505<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">共 4 个BU有待交付</div>
   </div>
   <div class="kpi-card or-card">
     <div class="kpi-label">本季度 OR</div>
-    <div class="kpi-value">7,694.5<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">6 个BU有订单</div>
+    <div class="kpi-value">7,578.4<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">4 个BU有订单</div>
+  </div>
+  </div>
+</div>
+<div class="kpi-group">
+  <div class="kpi-group-title grp-ep">EP 指标 · EP-I + EP-E</div>
+  <div class="kpi-row">
+  <div class="kpi-card year-to">
+    <div class="kpi-label">全年 完成 TO</div>
+    <div class="kpi-value">85<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">截至当前累计</div>
+  </div>
+  <div class="kpi-card year-rate highlight">
+    <div class="kpi-label">★ 全年 指标进度</div>
+    <div class="kpi-value">7.3<span style="font-size:16px"> %</span></div>
+    <div class="kpi-sub">完成TO 85 万 / 目标 1,158 万</div>
+  </div>
+  <div class="kpi-card target">
+    <div class="kpi-label">本季度 指标（目标）</div>
+    <div class="kpi-value">289<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">Q1</div>
+  </div>
+  <div class="kpi-card to">
+    <div class="kpi-label">本季度 已完成 TO</div>
+    <div class="kpi-value">85<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">实际完成（截至当前）</div>
+  </div>
+  <div class="kpi-card ooh">
+    <div class="kpi-label">本季度 OOH（在途）</div>
+    <div class="kpi-value">36<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">共 2 个BU有待交付</div>
+  </div>
+  <div class="kpi-card or-card">
+    <div class="kpi-label">本季度 OR</div>
+    <div class="kpi-value">116.0<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-sub">2 个BU有订单</div>
+  </div>
   </div>
 </div>
 <!-- 全年分季度完成情况（独立分区，头卡保持不动） -->
