@@ -173,9 +173,13 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 }
 
 .kpi-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px 32px 6px; align-items: start; }
-.kpi-group-title { font-size: 15px; font-weight: 700; color: #2c3e50; margin: 0 0 2px;
-  border-left: 4px solid #3498db; padding-left: 10px; line-height: 1.4; }
-.kpi-group-title.grp-ep { border-left-color: #e67e22; }
+.kpi-group, .q-group { border-radius: 10px; padding: 12px 14px 12px; box-sizing: border-box; }
+.kpi-group.grp-nep, .q-group.qc-nep { background: #eef6fd; border: 1px solid #cfe4f6; }
+.kpi-group.grp-ep,  .q-group.qc-ep  { background: #fdf5ec; border: 1px solid #f3e0c8; }
+.kpi-group-title { display: inline-block; font-size: 15px; font-weight: 700; color: #fff; margin: 0 0 4px;
+  padding: 3px 14px; border-radius: 14px; line-height: 1.4; border-left: none; }
+.kpi-group-title.grp-nep { background: #3498db; }
+.kpi-group-title.grp-ep { background: #e67e22; }
 .kpi-duo .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 10px 0 0; }
 .kpi-duo .kpi-card { padding: 14px 10px; }
 .kpi-duo .kpi-card.year-to, .kpi-duo .kpi-card.year-rate { grid-column: auto; }
@@ -202,7 +206,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
   <h1>西门子 FY27 全年+本季度考核看板</h1>
 
-  <div class="time">数据更新: 2026-11-03 17:54:12</div>
+  <div class="time">数据更新: 2026-11-03 17:57:40</div>
 
 </div>
 
@@ -210,7 +214,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
 <!-- KPI 总览（全年维度在前，结论先行；全年进度为高亮头卡） -->
 <div class="kpi-duo">
-<div class="kpi-group">
+<div class="kpi-group grp-nep">
   <div class="kpi-group-title grp-nep">非EP指标</div>
   <div class="kpi-row">
   <div class="kpi-card year-to">
@@ -244,7 +248,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
     <div class="kpi-sub">4 个BU有订单</div>
   </div>
   </div>
-</div><div class="kpi-group">
+</div><div class="kpi-group grp-ep">
   <div class="kpi-group-title grp-ep">EP 指标</div>
   <div class="kpi-row">
   <div class="kpi-card year-to">
@@ -284,7 +288,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
   <div class="panel">
     <h3>全年分季度完成情况（完成 TO / 完成率）</h3>
     <div class="quarter-duo">
-    <div class="q-group">
+    <div class="q-group qc-nep">
       <div class="kpi-group-title grp-nep">非EP指标</div>
       <div class="quarter-grid">
         <div class="q-card qc-nep">
@@ -329,7 +333,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
         </div>
       </div>
     </div>
-    <div class="q-group">
+    <div class="q-group qc-ep">
       <div class="kpi-group-title grp-ep">EP 指标</div>
       <div class="quarter-grid">
         <div class="q-card qc-ep">
