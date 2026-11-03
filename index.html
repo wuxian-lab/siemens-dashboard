@@ -184,6 +184,12 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 .kpi-duo .kpi-card.highlight { border-width: 2px; }
 .kpi-duo .kpi-sub { font-size: 11px; }
 @media (max-width: 1000px) { .kpi-duo { grid-template-columns: 1fr; } }
+/* 分季度面板：非EP左 / EP右 双栏，各栏内 2x2 季度卡 */
+.quarter-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.quarter-duo .quarter-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 10px; }
+.q-card.qc-nep { border-left-color: #3498db; }
+.q-card.qc-ep  { border-left-color: #e67e22; }
+@media (max-width: 1000px) { .quarter-duo { grid-template-columns: 1fr; } }
 </style>
 
 </head>
@@ -196,7 +202,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
   <h1>西门子 FY27 全年+本季度考核看板</h1>
 
-  <div class="time">数据更新: 2026-11-03 17:31:25</div>
+  <div class="time">数据更新: 2026-11-03 17:40:20</div>
 
 </div>
 
@@ -277,55 +283,97 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 <div class="quarter-breakdown">
   <div class="panel">
     <h3>全年分季度完成情况（完成 TO / 完成率）</h3>
-    <div class="quarter-grid">
-      <div class="q-card">
-        <div class="q-main">
-          <div class="q-name">Q1</div>
-          <div class="q-to">5,559<span> 万</span></div>
-          <div class="q-rate">
-            <span class="rate-low">完成率 36.4%</span>
-            <div class="q-bar"><i style="width:36.4%; background:#27ae60"></i></div>
+    <div class="quarter-duo">
+    <div class="q-group">
+      <div class="kpi-group-title grp-nep">非EP · FA + GMC + PA DCP + PA AE</div>
+      <div class="quarter-grid">
+        <div class="q-card qc-nep">
+          <div class="q-main">
+            <div class="q-name">Q1</div>
+            <div class="q-to">5,475<span> 万</span></div>
+            <div class="q-rate">
+              <span class="rate-low">完成率 37.5%</span>
+              <div class="q-bar"><i style="width:37.5%; background:#27ae60"></i></div>
+            </div>
           </div>
         </div>
-        <div class="q-bu">
-<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-low">43.0%</span></div><div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-low">38.7%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-low">31.9%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-low">41.0%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-low">9.3%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-low">11.4%</span></div>        </div>
-      </div>
-      <div class="q-card">
-        <div class="q-main">
-          <div class="q-name">Q2</div>
-          <div class="q-to">0<span> 万</span></div>
-          <div class="q-rate">
-            <span class="rate-low">完成率 0.0%</span>
-            <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+        <div class="q-card qc-nep">
+          <div class="q-main">
+            <div class="q-name">Q2</div>
+            <div class="q-to">0<span> 万</span></div>
+            <div class="q-rate">
+              <span class="rate-low">完成率 0.0%</span>
+              <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+            </div>
           </div>
         </div>
-        <div class="q-bu">
-<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-low">0.0%</span></div>        </div>
-      </div>
-      <div class="q-card">
-        <div class="q-main">
-          <div class="q-name">Q3</div>
-          <div class="q-to">0<span> 万</span></div>
-          <div class="q-rate">
-            <span class="rate-low">完成率 0.0%</span>
-            <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+        <div class="q-card qc-nep">
+          <div class="q-main">
+            <div class="q-name">Q3</div>
+            <div class="q-to">0<span> 万</span></div>
+            <div class="q-rate">
+              <span class="rate-low">完成率 0.0%</span>
+              <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+            </div>
           </div>
         </div>
-        <div class="q-bu">
-<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-low">0.0%</span></div>        </div>
-      </div>
-      <div class="q-card">
-        <div class="q-main">
-          <div class="q-name">Q4</div>
-          <div class="q-to">0<span> 万</span></div>
-          <div class="q-rate">
-            <span class="rate-low">完成率 0.0%</span>
-            <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+        <div class="q-card qc-nep">
+          <div class="q-main">
+            <div class="q-name">Q4</div>
+            <div class="q-to">0<span> 万</span></div>
+            <div class="q-rate">
+              <span class="rate-low">完成率 0.0%</span>
+              <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+            </div>
           </div>
         </div>
-        <div class="q-bu">
-<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-low">0.0%</span></div>        </div>
       </div>
+    </div>
+    <div class="q-group">
+      <div class="kpi-group-title grp-ep">EP · EP-I + EP-E</div>
+      <div class="quarter-grid">
+        <div class="q-card qc-ep">
+          <div class="q-main">
+            <div class="q-name">Q1</div>
+            <div class="q-to">85<span> 万</span></div>
+            <div class="q-rate">
+              <span class="rate-low">完成率 37.7%</span>
+              <div class="q-bar"><i style="width:37.7%; background:#27ae60"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="q-card qc-ep">
+          <div class="q-main">
+            <div class="q-name">Q2</div>
+            <div class="q-to">0<span> 万</span></div>
+            <div class="q-rate">
+              <span class="rate-low">完成率 0.0%</span>
+              <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="q-card qc-ep">
+          <div class="q-main">
+            <div class="q-name">Q3</div>
+            <div class="q-to">0<span> 万</span></div>
+            <div class="q-rate">
+              <span class="rate-low">完成率 0.0%</span>
+              <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="q-card qc-ep">
+          <div class="q-main">
+            <div class="q-name">Q4</div>
+            <div class="q-to">0<span> 万</span></div>
+            <div class="q-rate">
+              <span class="rate-low">完成率 0.0%</span>
+              <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </div>
