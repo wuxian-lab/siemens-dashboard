@@ -201,8 +201,9 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
   display: flex; justify-content: space-between; align-items: center; }
 .bu-detail h4 .bu-avg { font-size: 11px; font-weight: 600; color: #3498db;
   background: #eef6fd; padding: 2px 8px; border-radius: 10px; }
-.bu-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; font-size: 12px; }
-.bu-name { width: 52px; font-weight: 700; text-align: right; color: #333; flex: none; }
+/* 作用域限定 .kpi-group：避免污染季度卡 q-bu 里的同名 .bu-row/.bu-name（模板原有样式） */
+.kpi-group .bu-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; font-size: 12px; }
+.kpi-group .bu-name { width: 52px; font-weight: 700; text-align: right; color: #333; flex: none; }
 .bu-bar { flex: 1; height: 14px; background: #e9eef5; border-radius: 7px; overflow: hidden; }
 .bu-bar i { display: block; height: 100%; border-radius: 7px; }
 .bu-pct { width: 46px; text-align: right; font-weight: 700; flex: none; }
@@ -221,7 +222,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
   <h1>西门子 FY27 全年+本季度考核看板</h1>
 
-  <div class="time">数据更新: 2026-11-04 09:26:29</div>
+  <div class="time">数据更新: 2026-11-04 09:33:25</div>
 
 </div>
 
@@ -357,6 +358,9 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
               <div class="q-bar"><i style="width:39.7%; background:#27ae60"></i></div>
             </div>
           </div>
+          <div class="q-bu">
+<div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-low">41.4%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-low">32.3%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-low">41.0%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-low">10.3%</span></div>
+          </div>
         </div>
         <div class="q-card qc-nep">
           <div class="q-main">
@@ -366,6 +370,9 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
               <span class="rate-low">完成率 0.0%</span>
               <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
             </div>
+          </div>
+          <div class="q-bu">
+<div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-low">0.0%</span></div>
           </div>
         </div>
         <div class="q-card qc-nep">
@@ -377,6 +384,9 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
               <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
             </div>
           </div>
+          <div class="q-bu">
+<div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-low">0.0%</span></div>
+          </div>
         </div>
         <div class="q-card qc-nep">
           <div class="q-main">
@@ -386,6 +396,9 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
               <span class="rate-low">完成率 0.0%</span>
               <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
             </div>
+          </div>
+          <div class="q-bu">
+<div class="bu-row"><span class="bu-name">FA</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">GMC</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">PA DCP</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">PA AE</span><span class="bu-rate rate-low">0.0%</span></div>
           </div>
         </div>
       </div>
@@ -402,6 +415,9 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
               <div class="q-bar"><i style="width:37.8%; background:#27ae60"></i></div>
             </div>
           </div>
+          <div class="q-bu">
+<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-low">43.3%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-low">11.9%</span></div>
+          </div>
         </div>
         <div class="q-card qc-ep">
           <div class="q-main">
@@ -411,6 +427,9 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
               <span class="rate-low">完成率 0.0%</span>
               <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
             </div>
+          </div>
+          <div class="q-bu">
+<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-low">0.0%</span></div>
           </div>
         </div>
         <div class="q-card qc-ep">
@@ -422,6 +441,9 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
               <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
             </div>
           </div>
+          <div class="q-bu">
+<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-low">0.0%</span></div>
+          </div>
         </div>
         <div class="q-card qc-ep">
           <div class="q-main">
@@ -431,6 +453,9 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
               <span class="rate-low">完成率 0.0%</span>
               <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
             </div>
+          </div>
+          <div class="q-bu">
+<div class="bu-row"><span class="bu-name">EP-I</span><span class="bu-rate rate-low">0.0%</span></div><div class="bu-row"><span class="bu-name">EP-E</span><span class="bu-rate rate-low">0.0%</span></div>
           </div>
         </div>
       </div>
