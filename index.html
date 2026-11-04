@@ -195,21 +195,17 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 .q-card.qc-nep { border-left-color: #3498db; }
 .q-card.qc-ep  { border-left-color: #e67e22; }
 @media (max-width: 1000px) { .quarter-duo { grid-template-columns: 1fr; } }
-/* BU 明细条：组内每个BU本季度完成率，绿=超额贡献 橙=拖后腿 */
-.bu-detail { margin-top: 12px; padding-top: 10px; border-top: 1px dashed #cbd5e1; }
-.bu-detail h4 { font-size: 13px; margin: 0 0 8px; color: #555; font-weight: 700;
-  display: flex; justify-content: space-between; align-items: center; }
-.bu-detail h4 .bu-avg { font-size: 11px; font-weight: 600; color: #3498db;
-  background: #eef6fd; padding: 2px 8px; border-radius: 10px; }
-/* 作用域限定 .kpi-group：避免污染季度卡 q-bu 里的同名 .bu-row/.bu-name（模板原有样式） */
-.kpi-group .bu-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; font-size: 12px; }
-.kpi-group .bu-name { width: 52px; font-weight: 700; text-align: right; color: #333; flex: none; }
-.bu-bar { flex: 1; height: 14px; background: #e9eef5; border-radius: 7px; overflow: hidden; }
-.bu-bar i { display: block; height: 100%; border-radius: 7px; }
-.bu-pct { width: 46px; text-align: right; font-weight: 700; flex: none; }
-.bu-row.over .bu-pct { color: #27ae60; }
-.bu-row.under .bu-pct { color: #e67e22; }
-.bu-meta { width: 100px; color: #94a3b8; font-size: 11px; flex: none; text-align: right; }
+/* BU 明细条（商务风）：蓝色渐变条 + 黄色虚线年度目标达成线 */
+.bu-detail { margin-top: 8px; padding-top: 6px; border-top: 1px dashed #cbd5e1; }
+.kpi-group .bu-row { display: flex; align-items: center; gap: 10px; margin: 14px 0 6px; font-size: 12px; }
+.kpi-group .bu-name { width: 58px; font-weight: 700; text-align: right; color: #333; flex: none; }
+.bu-track { flex: 1; height: 16px; background: #edf1f6; border-radius: 8px; position: relative; }
+.bu-track i { position: absolute; left: 0; top: 0; height: 100%; border-radius: 8px;
+  background: linear-gradient(90deg, #1a5fa8, #3f92e0); }
+.bu-target { position: absolute; top: -3px; bottom: -3px; width: 0; border-left: 2px dashed #e0a800; }
+.bu-target em { position: absolute; top: -13px; left: -16px; font-style: normal;
+  font-size: 10px; font-weight: 700; color: #b8860b; }
+.kpi-group .bu-pct { width: 52px; text-align: right; font-weight: 700; color: #222; flex: none; }
 </style>
 
 </head>
@@ -222,7 +218,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
   <h1>西门子 FY27 全年+本季度考核看板</h1>
 
-  <div class="time">数据更新: 2026-11-04 09:50:41</div>
+  <div class="time">数据更新: 2026-11-04 09:59:30</div>
 
 </div>
 
@@ -243,29 +239,25 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
   </div>
   </div>
     <div class="bu-detail">
-        <div class="bu-row over">
+        <div class="bu-row">
           <span class="bu-name">FA</span>
-          <span class="bu-bar"><i style="width:100.0%; background:#27ae60"></i></span>
+          <span class="bu-track"><i style="width:10.3%"></i><span class="bu-target" style="left:16.7%"><em>16.7%</em></span></span>
           <span class="bu-pct">10.3%</span>
-          <span class="bu-meta">完成 4,622 万</span>
         </div>
-        <div class="bu-row over">
+        <div class="bu-row">
           <span class="bu-name">GMC</span>
-          <span class="bu-bar"><i style="width:78.0%; background:#27ae60"></i></span>
+          <span class="bu-track"><i style="width:8.1%"></i><span class="bu-target" style="left:16.7%"><em>16.7%</em></span></span>
           <span class="bu-pct">8.1%</span>
-          <span class="bu-meta">完成 870 万</span>
         </div>
-        <div class="bu-row over">
+        <div class="bu-row">
           <span class="bu-name">PA DCP</span>
-          <span class="bu-bar"><i style="width:99.1%; background:#27ae60"></i></span>
+          <span class="bu-track"><i style="width:10.3%"></i><span class="bu-target" style="left:16.7%"><em>16.7%</em></span></span>
           <span class="bu-pct">10.3%</span>
-          <span class="bu-meta">完成 234 万</span>
         </div>
-        <div class="bu-row under">
+        <div class="bu-row">
           <span class="bu-name">PA AE</span>
-          <span class="bu-bar"><i style="width:24.8%; background:#e67e22"></i></span>
+          <span class="bu-track"><i style="width:2.6%"></i><span class="bu-target" style="left:16.7%"><em>16.7%</em></span></span>
           <span class="bu-pct">2.6%</span>
-          <span class="bu-meta">完成 57 万</span>
         </div>
     </div>
 </div><div class="kpi-group grp-ep">
@@ -281,17 +273,15 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
   </div>
   </div>
     <div class="bu-detail">
-        <div class="bu-row over">
+        <div class="bu-row">
           <span class="bu-name">EP-I</span>
-          <span class="bu-bar"><i style="width:100.0%; background:#27ae60"></i></span>
+          <span class="bu-track"><i style="width:10.8%"></i><span class="bu-target" style="left:16.7%"><em>16.7%</em></span></span>
           <span class="bu-pct">10.8%</span>
-          <span class="bu-meta">完成 71 万</span>
         </div>
-        <div class="bu-row under">
+        <div class="bu-row">
           <span class="bu-name">EP-E</span>
-          <span class="bu-bar"><i style="width:27.5%; background:#e67e22"></i></span>
+          <span class="bu-track"><i style="width:3.0%"></i><span class="bu-target" style="left:16.7%"><em>16.7%</em></span></span>
           <span class="bu-pct">3.0%</span>
-          <span class="bu-meta">完成 15 万</span>
         </div>
     </div>
 </div></div>
