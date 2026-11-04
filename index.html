@@ -180,7 +180,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
   padding: 3px 14px; border-radius: 14px; line-height: 1.4; border-left: none; }
 .kpi-group-title.grp-nep { background: #3498db; }
 .kpi-group-title.grp-ep { background: #e67e22; }
-.kpi-duo .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 10px 0 0; }
+.kpi-duo .kpi-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 10px 0 0; }
 .kpi-duo .kpi-card { padding: 14px 10px; }
 .kpi-duo .kpi-card.year-to, .kpi-duo .kpi-card.year-rate { grid-column: auto; }
 .kpi-duo .kpi-value { font-size: 22px; }
@@ -209,7 +209,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 .bu-pct { width: 46px; text-align: right; font-weight: 700; flex: none; }
 .bu-row.over .bu-pct { color: #27ae60; }
 .bu-row.under .bu-pct { color: #e67e22; }
-.bu-meta { width: 138px; color: #94a3b8; font-size: 11px; flex: none; text-align: right; }
+.bu-meta { width: 100px; color: #94a3b8; font-size: 11px; flex: none; text-align: right; }
 </style>
 
 </head>
@@ -222,7 +222,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
   <h1>西门子 FY27 全年+本季度考核看板</h1>
 
-  <div class="time">数据更新: 2026-11-04 09:33:25</div>
+  <div class="time">数据更新: 2026-11-04 09:41:41</div>
 
 </div>
 
@@ -234,110 +234,70 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
   <div class="kpi-group-title grp-nep">非EP指标</div>
   <div class="kpi-row">
   <div class="kpi-card year-to">
-    <div class="kpi-label">全年 完成 TO</div>
+    <div class="kpi-label">全年 指标完成</div>
     <div class="kpi-value">5,784<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">截至当前累计</div>
+    <div class="kpi-sub">全年指标 59,988 万</div>
   </div>
   <div class="kpi-card year-rate highlight">
-    <div class="kpi-label">★ 全年 指标进度</div>
+    <div class="kpi-label">★ 全年 指标完成率</div>
     <div class="kpi-value">9.6<span style="font-size:16px"> %</span></div>
-    <div class="kpi-sub">完成TO 5,784 万 / 目标 59,988 万</div>
-  </div>
-  <div class="kpi-card target">
-    <div class="kpi-label">本季度 指标（目标）</div>
-    <div class="kpi-value">14,997<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">Q1</div>
-  </div>
-  <div class="kpi-card to">
-    <div class="kpi-label">本季度 已完成 TO</div>
-    <div class="kpi-value">5,784<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">实际完成（截至当前）</div>
-  </div>
-  <div class="kpi-card ooh">
-    <div class="kpi-label">本季度 OOH（在途）</div>
-    <div class="kpi-value">4,998<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">共 3 个BU有待交付</div>
-  </div>
-  <div class="kpi-card or-card">
-    <div class="kpi-label">本季度 OR</div>
-    <div class="kpi-value">7,578.4<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">4 个BU有订单</div>
+    <div class="kpi-sub">完成TO 5,784 万 / 指标 59,988 万</div>
   </div>
   </div>
     <div class="bu-detail">
-      <h4>BU 明细 · 本季度完成率<span class="bu-avg">基准 组内均值 31.2%</span></h4>
+      <h4>BU 明细 · 全年完成（完成 TO / 完成率）<span class="bu-avg">基准 组内均值 7.8%</span></h4>
         <div class="bu-row over">
           <span class="bu-name">FA</span>
           <span class="bu-bar"><i style="width:100.0%; background:#27ae60"></i></span>
-          <span class="bu-pct">41.4%</span>
-          <span class="bu-meta">指标11,173万 / 完成4,622万</span>
+          <span class="bu-pct">10.3%</span>
+          <span class="bu-meta">完成 4,622 万</span>
         </div>
         <div class="bu-row over">
           <span class="bu-name">GMC</span>
           <span class="bu-bar"><i style="width:78.0%; background:#27ae60"></i></span>
-          <span class="bu-pct">32.3%</span>
-          <span class="bu-meta">指标2,698万 / 完成870万</span>
+          <span class="bu-pct">8.1%</span>
+          <span class="bu-meta">完成 870 万</span>
         </div>
         <div class="bu-row over">
           <span class="bu-name">PA DCP</span>
           <span class="bu-bar"><i style="width:99.1%; background:#27ae60"></i></span>
-          <span class="bu-pct">41.0%</span>
-          <span class="bu-meta">指标572万 / 完成234万</span>
+          <span class="bu-pct">10.3%</span>
+          <span class="bu-meta">完成 234 万</span>
         </div>
         <div class="bu-row under">
           <span class="bu-name">PA AE</span>
           <span class="bu-bar"><i style="width:24.8%; background:#e67e22"></i></span>
-          <span class="bu-pct">10.3%</span>
-          <span class="bu-meta">指标554万 / 完成57万</span>
+          <span class="bu-pct">2.6%</span>
+          <span class="bu-meta">完成 57 万</span>
         </div>
     </div>
 </div><div class="kpi-group grp-ep">
   <div class="kpi-group-title grp-ep">EP 指标</div>
   <div class="kpi-row">
   <div class="kpi-card year-to">
-    <div class="kpi-label">全年 完成 TO</div>
+    <div class="kpi-label">全年 指标完成</div>
     <div class="kpi-value">86<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">截至当前累计</div>
+    <div class="kpi-sub">全年指标 1,158 万</div>
   </div>
   <div class="kpi-card year-rate highlight">
-    <div class="kpi-label">★ 全年 指标进度</div>
+    <div class="kpi-label">★ 全年 指标完成率</div>
     <div class="kpi-value">7.4<span style="font-size:16px"> %</span></div>
-    <div class="kpi-sub">完成TO 86 万 / 目标 1,158 万</div>
-  </div>
-  <div class="kpi-card target">
-    <div class="kpi-label">本季度 指标（目标）</div>
-    <div class="kpi-value">289<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">Q1</div>
-  </div>
-  <div class="kpi-card to">
-    <div class="kpi-label">本季度 已完成 TO</div>
-    <div class="kpi-value">86<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">实际完成（截至当前）</div>
-  </div>
-  <div class="kpi-card ooh">
-    <div class="kpi-label">本季度 OOH（在途）</div>
-    <div class="kpi-value">50<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">共 2 个BU有待交付</div>
-  </div>
-  <div class="kpi-card or-card">
-    <div class="kpi-label">本季度 OR</div>
-    <div class="kpi-value">116.0<span style="font-size:16px"> 万</span></div>
-    <div class="kpi-sub">2 个BU有订单</div>
+    <div class="kpi-sub">完成TO 86 万 / 指标 1,158 万</div>
   </div>
   </div>
     <div class="bu-detail">
-      <h4>BU 明细 · 本季度完成率<span class="bu-avg">基准 组内均值 27.6%</span></h4>
+      <h4>BU 明细 · 全年完成（完成 TO / 完成率）<span class="bu-avg">基准 组内均值 6.9%</span></h4>
         <div class="bu-row over">
           <span class="bu-name">EP-I</span>
           <span class="bu-bar"><i style="width:100.0%; background:#27ae60"></i></span>
-          <span class="bu-pct">43.3%</span>
-          <span class="bu-meta">指标164万 / 完成71万</span>
+          <span class="bu-pct">10.8%</span>
+          <span class="bu-meta">完成 71 万</span>
         </div>
         <div class="bu-row under">
           <span class="bu-name">EP-E</span>
           <span class="bu-bar"><i style="width:27.5%; background:#e67e22"></i></span>
-          <span class="bu-pct">11.9%</span>
-          <span class="bu-meta">指标125万 / 完成15万</span>
+          <span class="bu-pct">3.0%</span>
+          <span class="bu-meta">完成 15 万</span>
         </div>
     </div>
 </div></div>
