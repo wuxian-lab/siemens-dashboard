@@ -222,7 +222,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
 
   <h1>西门子 FY27 全年+本季度考核看板</h1>
 
-  <div class="time">数据更新: 2026-11-04 10:21:57</div>
+  <div class="time">数据更新: 2026-11-04 10:27:44</div>
 
 </div>
 
@@ -309,7 +309,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">5,784<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 39.7%</span>
-              <div class="q-bar"><i style="width:39.7%; background:#378ADD"></i></div>
+              <div class="q-bar"><i style="width:39.7%; background:linear-gradient(90deg, #185FA5, #378ADD)"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -322,7 +322,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">0<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 0.0%</span>
-              <div class="q-bar"><i style="width:0.0%; background:#378ADD"></i></div>
+              <div class="q-bar"><i style="width:0.0%; background:linear-gradient(90deg, #185FA5, #378ADD)"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -335,7 +335,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">0<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 0.0%</span>
-              <div class="q-bar"><i style="width:0.0%; background:#378ADD"></i></div>
+              <div class="q-bar"><i style="width:0.0%; background:linear-gradient(90deg, #185FA5, #378ADD)"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -348,7 +348,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">0<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 0.0%</span>
-              <div class="q-bar"><i style="width:0.0%; background:#378ADD"></i></div>
+              <div class="q-bar"><i style="width:0.0%; background:linear-gradient(90deg, #185FA5, #378ADD)"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -366,7 +366,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">86<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 37.8%</span>
-              <div class="q-bar"><i style="width:37.8%; background:#378ADD"></i></div>
+              <div class="q-bar"><i style="width:37.8%; background:linear-gradient(90deg, #185FA5, #378ADD)"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -379,7 +379,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">0<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 0.0%</span>
-              <div class="q-bar"><i style="width:0.0%; background:#378ADD"></i></div>
+              <div class="q-bar"><i style="width:0.0%; background:linear-gradient(90deg, #185FA5, #378ADD)"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -392,7 +392,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">0<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 0.0%</span>
-              <div class="q-bar"><i style="width:0.0%; background:#378ADD"></i></div>
+              <div class="q-bar"><i style="width:0.0%; background:linear-gradient(90deg, #185FA5, #378ADD)"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -405,7 +405,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">0<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 0.0%</span>
-              <div class="q-bar"><i style="width:0.0%; background:#378ADD"></i></div>
+              <div class="q-bar"><i style="width:0.0%; background:linear-gradient(90deg, #185FA5, #378ADD)"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -668,6 +668,13 @@ const smallColors = smallIdx.map(i => colors[i]);
 
 
 
+function barGrad(ctx) {
+  const ch = ctx.chart, area = ch.chartArea;
+  if (!area) return '#185FA5';
+  const g = ch.ctx.createLinearGradient(0, 0, area.width, 0);
+  g.addColorStop(0, '#185FA5'); g.addColorStop(1, '#378ADD');
+  return g;
+}
 function makeCompareChart(canvasId, busGroup, idxArr, clrArr) {
 
   const tgt2 = idxArr.map(i => targetData[busLabels[i]]);
@@ -698,9 +705,9 @@ function makeCompareChart(canvasId, busGroup, idxArr, clrArr) {
 
           data: act2,
 
-          backgroundColor: clrArr,
+          backgroundColor: c => barGrad(c),
 
-          borderColor: clrArr.map(c => darken(c, 30)),
+          borderColor: '#0F4478',
 
           borderWidth: 1.5,
 
@@ -730,9 +737,9 @@ function makeCompareChart(canvasId, busGroup, idxArr, clrArr) {
 
           data: dff2,
 
-          backgroundColor: clrArr.map(c => lighten(c, 140)),
+          backgroundColor: '#B5D4F4',
 
-          borderColor: clrArr.map(c => lighten(c, 80)),
+          borderColor: '#8FBCE8',
 
           borderWidth: 1.5,
 
@@ -824,7 +831,7 @@ new Chart(document.getElementById('chartOoh').getContext('2d'), {
 
     labels: busLabels,
 
-    datasets: [{ label: '在途OOH', data: busLabels.map(b => oohData[b]), backgroundColor: '#185FA5cc', borderColor: '#0F4478', borderWidth: 1.5, borderRadius: 6,
+    datasets: [{ label: '在途OOH', data: busLabels.map(b => oohData[b]), backgroundColor: c => barGrad(c), borderColor: '#0F4478', borderWidth: 1.5, borderRadius: 6,
 
       datalabels: {
 
@@ -872,7 +879,7 @@ new Chart(document.getElementById('chartOr').getContext('2d'), {
 
     labels: busLabels,
 
-    datasets: [{ label: 'Q4 OR', data: busLabels.map(b => orData[b]), backgroundColor: '#185FA5cc', borderColor: '#0F4478', borderWidth: 1.5, borderRadius: 6,
+    datasets: [{ label: 'Q4 OR', data: busLabels.map(b => orData[b]), backgroundColor: c => barGrad(c), borderColor: '#0F4478', borderWidth: 1.5, borderRadius: 6,
 
       datalabels: {
 
