@@ -18,9 +18,9 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif; background: #f0f2f5; color: #1a1a2e; min-height: 100vh; }
+body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif; background: #F2F6FA; color: #0A2540; min-height: 100vh; }
 
-.header { background: linear-gradient(135deg, #1a3a4a 0%, #2d6a8a 100%); color: white; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; }
+.header { background: linear-gradient(135deg, #0A2540 0%, #185FA5 100%); color: white; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; }
 
 .header h1 { font-size: 22px; font-weight: 600; letter-spacing: 1px; }
 
@@ -56,11 +56,11 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 
 .kpi-card.year-rate .kpi-value { color: #34495e; }
 
-.kpi-card.highlight { border: 2px solid #16a085; background: linear-gradient(135deg, #eafaf6 0%, #ffffff 100%); box-shadow: 0 4px 20px rgba(26,188,156,0.18); }
+.kpi-card.highlight { border: 2px solid #378ADD; background: linear-gradient(135deg, #E6F1FB 0%, #ffffff 100%); box-shadow: 0 4px 20px rgba(55,138,221,0.22); }
 
-.kpi-card.highlight .kpi-label { color: #16a085; font-weight: 700; }
+.kpi-card.highlight .kpi-label { color: #185FA5; font-weight: 700; }
 
-.kpi-card.highlight .kpi-value { font-size: 34px; color: #16a085; }
+.kpi-card.highlight .kpi-value { font-size: 34px; color: #185FA5; }
 
 
 
@@ -74,9 +74,9 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 
 .q-card .q-main { flex: 1; min-width: 0; }
 
-.q-card .q-name { font-size: 14px; font-weight: 600; color: #1a3a4a; margin-bottom: 8px; letter-spacing: 1px; }
+.q-card .q-name { font-size: 14px; font-weight: 600; color: #0A2540; margin-bottom: 8px; letter-spacing: 1px; }
 
-.q-card .q-to { font-size: 22px; font-weight: 700; color: #1a3a4a; }
+.q-card .q-to { font-size: 22px; font-weight: 700; color: #0A2540; }
 
 .q-card .q-to span { font-size: 13px; color: #888; font-weight: 400; margin-left: 2px; }
 
@@ -102,7 +102,7 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 
 .panel { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
 
-.panel h3 { font-size: 16px; font-weight: 600; color: #1a3a4a; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #f0f2f5; }
+.panel h3 { font-size: 16px; font-weight: 600; color: #0A2540; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #f0f2f5; }
 
 .panel.full { /* full width */ }
 
@@ -112,7 +112,7 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 
 .chart-panel { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
 
-.chart-panel h3 { font-size: 16px; font-weight: 600; color: #1a3a4a; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #f0f2f5; }
+.chart-panel h3 { font-size: 16px; font-weight: 600; color: #0A2540; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #f0f2f5; }
 
 .chart-panel.full { grid-column: 1 / -1; }
 
@@ -126,21 +126,21 @@ table { width: 100%; border-collapse: collapse; font-size: 13px; }
 
 th, td { padding: 10px 14px; text-align: right; border-bottom: 1px solid #f0f2f5; }
 
-th { background: #f8f9fa; color: #555; font-weight: 600; font-size: 12px; white-space: nowrap; }
+th { background: #E6F1FB; color: #0A2540; font-weight: 600; font-size: 12px; white-space: nowrap; }
 
 td:first-child, th:first-child { text-align: left; font-weight: 600; }
 
 tr:hover { background: #f8f9fa; }
 
-tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700; }
+tr.total { border-top: 2px solid #0A2540; background: #E6F1FB; font-weight: 700; }
 
 
 
-.rate-high { color: #27ae60; font-weight: 700; }
+.rate-high { color: #185FA5; font-weight: 700; }
 
-.rate-mid { color: #e67e22; font-weight: 700; }
+.rate-mid { color: #BA7517; font-weight: 700; }
 
-.rate-low { color: #e74c3c; font-weight: 700; }
+.rate-low { color: #D85A30; font-weight: 700; }
 
 .zero { color: #999; }
 
@@ -174,42 +174,42 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
 .kpi-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px 32px 6px; align-items: start; }
 .kpi-group, .q-group { border-radius: 10px; padding: 12px 14px 12px; box-sizing: border-box; }
-.kpi-group.grp-nep, .q-group.qc-nep { background: #eef6fd; border: 1px solid #cfe4f6; }
-.kpi-group.grp-ep,  .q-group.qc-ep  { background: #fdf5ec; border: 1px solid #f3e0c8; }
+.kpi-group.grp-nep, .q-group.qc-nep { background: #E6F1FB; border: 1px solid #B5D4F4; }
+.kpi-group.grp-ep,  .q-group.qc-ep  { background: #FBF4E7; border: 1px solid #EBD9B8; }
 .kpi-group-title { display: inline-block; font-size: 15px; font-weight: 700; color: #fff; margin: 0 0 4px;
   padding: 3px 14px; border-radius: 14px; line-height: 1.4; border-left: none; }
-.kpi-group-title.grp-nep { background: #3498db; }
-.kpi-group-title.grp-ep { background: #e67e22; }
+.kpi-group-title.grp-nep { background: #185FA5; }
+.kpi-group-title.grp-ep { background: #BA7517; }
 .kpi-duo .kpi-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 10px 0 0; }
 .kpi-duo .kpi-card { padding: 14px 10px; }
 .kpi-duo .kpi-card.year-to, .kpi-duo .kpi-card.year-rate { grid-column: auto; }
 .kpi-duo .kpi-value { font-size: 22px; }
-.kpi-duo .kpi-card .kpi-value { color: #222; }
+.kpi-duo .kpi-card .kpi-value { color: #0A2540; }
 .kpi-duo .kpi-card.highlight .kpi-value { font-size: 26px; }
 .kpi-duo .kpi-card.highlight { border-width: 2px; }
 .kpi-duo .kpi-sub { font-size: 11px; }
 @media (max-width: 1000px) { .kpi-duo { grid-template-columns: 1fr; } }
-/* 分季度面板：非EP左 / EP右 双栏，各栏内 2x2 季度卡 */
+/* 分季度面板：FY27总体左 / EP右 双栏，各栏内 2x2 季度卡 */
 .quarter-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
 .quarter-duo .quarter-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 10px; }
-.q-card.qc-nep { border-left-color: #3498db; }
-.q-card.qc-ep  { border-left-color: #e67e22; }
+.q-card.qc-nep { border-left-color: #185FA5; }
+.q-card.qc-ep  { border-left-color: #BA7517; }
 @media (max-width: 1000px) { .quarter-duo { grid-template-columns: 1fr; } }
-/* 汇总表 BU 明细行：挂在 非EP 总行下方，视觉弱化（浅灰字+淡底+缩进），不影响看总体数据 */
-tr.bu-detail-row td { color: #7a8ba3; font-size: 12px; background: #f7fafd; }
-tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #94a3b8; }
-/* BU 明细条（商务风）：蓝色渐变条 + 黄色虚线年度目标达成线 */
-.bu-detail { margin-top: 8px; padding-top: 6px; border-top: 1px dashed #cbd5e1; }
+/* 汇总表 BU 明细行：挂在 FY27总体 总行下方，视觉弱化（浅蓝灰字+淡蓝底+缩进），不影响看总体数据 */
+tr.bu-detail-row td { color: #7A8BA3; font-size: 12px; background: #F2F7FC; }
+tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #90A8C0; }
+/* BU 明细条（商务风）：主蓝渐变条 + 琥珀虚线年度目标达成线 */
+.bu-detail { margin-top: 8px; padding-top: 6px; border-top: 1px dashed #B5D4F4; }
 .kpi-group .bu-row { display: flex; align-items: center; gap: 10px; margin: 14px 0 6px; font-size: 12px; }
-.kpi-group .bu-name { width: 58px; font-weight: 700; text-align: right; color: #333; flex: none; }
-.bu-track { flex: 1; height: 16px; background: #edf1f6; border-radius: 8px; position: relative; }
+.kpi-group .bu-name { width: 58px; font-weight: 700; text-align: right; color: #0A2540; flex: none; }
+.bu-track { flex: 1; height: 16px; background: #D8E6F5; border-radius: 8px; position: relative; }
 .bu-track i { position: absolute; left: 0; top: 0; height: 100%; border-radius: 8px;
-  background: linear-gradient(90deg, #1a5fa8, #3f92e0); }
-.bu-target { position: absolute; top: -3px; bottom: -3px; width: 0; border-left: 2px dashed #e0a800; }
+  background: linear-gradient(90deg, #185FA5, #378ADD); }
+.bu-target { position: absolute; top: -3px; bottom: -3px; width: 0; border-left: 2px dashed #BA7517; }
 .bu-target em { position: absolute; top: -13px; left: -16px; font-style: normal;
-  font-size: 10px; font-weight: 700; color: #b8860b; }
-.kpi-group .bu-pct { width: 52px; text-align: right; font-weight: 700; color: #222; flex: none; }
-.kpi-group .bu-meta { width: 92px; color: #7a8a99; font-size: 11px; flex: none; text-align: right; }
+  font-size: 10px; font-weight: 700; color: #BA7517; }
+.kpi-group .bu-pct { width: 52px; text-align: right; font-weight: 700; color: #0A2540; flex: none; }
+.kpi-group .bu-meta { width: 92px; color: #7A8BA3; font-size: 11px; flex: none; text-align: right; }
 </style>
 
 </head>
@@ -222,7 +222,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
 
   <h1>西门子 FY27 全年+本季度考核看板</h1>
 
-  <div class="time">数据更新: 2026-11-04 10:13:35</div>
+  <div class="time">数据更新: 2026-11-04 10:21:57</div>
 
 </div>
 
@@ -309,7 +309,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">5,784<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 39.7%</span>
-              <div class="q-bar"><i style="width:39.7%; background:#27ae60"></i></div>
+              <div class="q-bar"><i style="width:39.7%; background:#378ADD"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -322,7 +322,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">0<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 0.0%</span>
-              <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+              <div class="q-bar"><i style="width:0.0%; background:#378ADD"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -335,7 +335,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">0<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 0.0%</span>
-              <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+              <div class="q-bar"><i style="width:0.0%; background:#378ADD"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -348,7 +348,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">0<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 0.0%</span>
-              <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+              <div class="q-bar"><i style="width:0.0%; background:#378ADD"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -366,7 +366,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">86<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 37.8%</span>
-              <div class="q-bar"><i style="width:37.8%; background:#27ae60"></i></div>
+              <div class="q-bar"><i style="width:37.8%; background:#378ADD"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -379,7 +379,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">0<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 0.0%</span>
-              <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+              <div class="q-bar"><i style="width:0.0%; background:#378ADD"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -392,7 +392,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">0<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 0.0%</span>
-              <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+              <div class="q-bar"><i style="width:0.0%; background:#378ADD"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -405,7 +405,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <div class="q-to">0<span> 万</span></div>
             <div class="q-rate">
               <span class="rate-low">完成率 0.0%</span>
-              <div class="q-bar"><i style="width:0.0%; background:#27ae60"></i></div>
+              <div class="q-bar"><i style="width:0.0%; background:#378ADD"></i></div>
             </div>
           </div>
           <div class="q-bu">
@@ -824,7 +824,7 @@ new Chart(document.getElementById('chartOoh').getContext('2d'), {
 
     labels: busLabels,
 
-    datasets: [{ label: '在途OOH', data: busLabels.map(b => oohData[b]), backgroundColor: colors.map(c => c + 'cc'), borderColor: colors.map(c => darken(c, 30)), borderWidth: 1.5, borderRadius: 6,
+    datasets: [{ label: '在途OOH', data: busLabels.map(b => oohData[b]), backgroundColor: '#185FA5cc', borderColor: '#0F4478', borderWidth: 1.5, borderRadius: 6,
 
       datalabels: {
 
@@ -872,7 +872,7 @@ new Chart(document.getElementById('chartOr').getContext('2d'), {
 
     labels: busLabels,
 
-    datasets: [{ label: 'Q4 OR', data: busLabels.map(b => orData[b]), backgroundColor: colors.map(c => c + 'cc'), borderColor: colors.map(c => darken(c, 30)), borderWidth: 1.5, borderRadius: 6,
+    datasets: [{ label: 'Q4 OR', data: busLabels.map(b => orData[b]), backgroundColor: '#185FA5cc', borderColor: '#0F4478', borderWidth: 1.5, borderRadius: 6,
 
       datalabels: {
 
