@@ -195,6 +195,20 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 .q-card.qc-nep { border-left-color: #3498db; }
 .q-card.qc-ep  { border-left-color: #e67e22; }
 @media (max-width: 1000px) { .quarter-duo { grid-template-columns: 1fr; } }
+/* BU 明细条：组内每个BU本季度完成率，绿=超额贡献 橙=拖后腿 */
+.bu-detail { margin-top: 12px; padding-top: 10px; border-top: 1px dashed #cbd5e1; }
+.bu-detail h4 { font-size: 13px; margin: 0 0 8px; color: #555; font-weight: 700;
+  display: flex; justify-content: space-between; align-items: center; }
+.bu-detail h4 .bu-avg { font-size: 11px; font-weight: 600; color: #3498db;
+  background: #eef6fd; padding: 2px 8px; border-radius: 10px; }
+.bu-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; font-size: 12px; }
+.bu-name { width: 52px; font-weight: 700; text-align: right; color: #333; flex: none; }
+.bu-bar { flex: 1; height: 14px; background: #e9eef5; border-radius: 7px; overflow: hidden; }
+.bu-bar i { display: block; height: 100%; border-radius: 7px; }
+.bu-pct { width: 46px; text-align: right; font-weight: 700; flex: none; }
+.bu-row.over .bu-pct { color: #27ae60; }
+.bu-row.under .bu-pct { color: #e67e22; }
+.bu-meta { width: 138px; color: #94a3b8; font-size: 11px; flex: none; text-align: right; }
 </style>
 
 </head>
@@ -207,7 +221,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
   <h1>西门子 FY27 全年+本季度考核看板</h1>
 
-  <div class="time">数据更新: 2026-11-04 08:33:16</div>
+  <div class="time">数据更新: 2026-11-04 09:15:31</div>
 
 </div>
 
@@ -240,7 +254,7 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
   </div>
   <div class="kpi-card ooh">
     <div class="kpi-label">本季度 OOH（在途）</div>
-    <div class="kpi-value">4,999<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-value">4,998<span style="font-size:16px"> 万</span></div>
     <div class="kpi-sub">共 3 个BU有待交付</div>
   </div>
   <div class="kpi-card or-card">
@@ -249,6 +263,33 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
     <div class="kpi-sub">4 个BU有订单</div>
   </div>
   </div>
+    <div class="bu-detail">
+      <h4>BU 明细 · 本季度完成率<span class="bu-avg">基准 组内均值 31.2%</span></h4>
+        <div class="bu-row over">
+          <span class="bu-name">FA</span>
+          <span class="bu-bar"><i style="width:100.0%; background:#27ae60"></i></span>
+          <span class="bu-pct">41.4%</span>
+          <span class="bu-meta">指标11,173万 / 完成4,622万</span>
+        </div>
+        <div class="bu-row over">
+          <span class="bu-name">GMC</span>
+          <span class="bu-bar"><i style="width:78.0%; background:#27ae60"></i></span>
+          <span class="bu-pct">32.3%</span>
+          <span class="bu-meta">指标2,698万 / 完成870万</span>
+        </div>
+        <div class="bu-row over">
+          <span class="bu-name">PA DCP</span>
+          <span class="bu-bar"><i style="width:99.1%; background:#27ae60"></i></span>
+          <span class="bu-pct">41.0%</span>
+          <span class="bu-meta">指标572万 / 完成234万</span>
+        </div>
+        <div class="bu-row under">
+          <span class="bu-name">PA AE</span>
+          <span class="bu-bar"><i style="width:24.8%; background:#e67e22"></i></span>
+          <span class="bu-pct">10.3%</span>
+          <span class="bu-meta">指标554万 / 完成57万</span>
+        </div>
+    </div>
 </div><div class="kpi-group grp-ep">
   <div class="kpi-group-title grp-ep">EP 指标</div>
   <div class="kpi-row">
@@ -283,6 +324,21 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
     <div class="kpi-sub">2 个BU有订单</div>
   </div>
   </div>
+    <div class="bu-detail">
+      <h4>BU 明细 · 本季度完成率<span class="bu-avg">基准 组内均值 27.6%</span></h4>
+        <div class="bu-row over">
+          <span class="bu-name">EP-I</span>
+          <span class="bu-bar"><i style="width:100.0%; background:#27ae60"></i></span>
+          <span class="bu-pct">43.3%</span>
+          <span class="bu-meta">指标164万 / 完成71万</span>
+        </div>
+        <div class="bu-row under">
+          <span class="bu-name">EP-E</span>
+          <span class="bu-bar"><i style="width:27.5%; background:#e67e22"></i></span>
+          <span class="bu-pct">11.9%</span>
+          <span class="bu-meta">指标125万 / 完成15万</span>
+        </div>
+    </div>
 </div></div>
 <!-- 全年分季度完成情况（独立分区，头卡保持不动） -->
 <div class="quarter-breakdown">
@@ -432,8 +488,8 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
           <td class="rate-low">9.6%</td>
           <td>14,997.1万</td>
           <td>5,783.8万</td>
-          <td>4,998.6万</td>
-          <td>10,782.4万</td>
+          <td>4,998.1万</td>
+          <td>10,781.9万</td>
           <td class="rate-low">71.9%</td>
           <td>46.4%</td>
           <td>7,578.4万</td>
@@ -458,8 +514,8 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
             <td>9.6%</td>
             <td>15,286.6万</td>
             <td>5,869.7万</td>
-            <td>5,048.3万</td>
-            <td>10,918.1万</td>
+            <td>5,047.8万</td>
+            <td>10,917.6万</td>
             <td>71.4%</td>
             <td>46.2%</td>
             <td>7,694.5万</td>
@@ -527,9 +583,9 @@ tr.total { border-top: 2px solid #1a3a4a; background: #f0f5fa; font-weight: 700;
 
 const busLabels = ["FA", "GMC", "PA DCP", "PA AE", "EP-I", "EP-E"];
 
-const oohData = {"EP-I": 420666.19, "FA": 43698807.14, "GMC": 4676014.40, "PA DCP": 1610850.91, "PA AE": 0, "EP-E": 76953.34};
+const oohData = {"EP-I": 420666.19, "FA": 43693811.89, "GMC": 4676014.40, "PA DCP": 1610850.91, "PA AE": 0, "EP-E": 76953.34};
 
-const toData = {"EP-I": 1130976.49, "FA": 89920340.08, "GMC": 13377995.78, "PA DCP": 3955654.96, "PA AE": 569645.22, "EP-E": 226162.42};
+const toData = {"EP-I": 1130976.49, "FA": 89915344.83, "GMC": 13377995.78, "PA DCP": 3955654.96, "PA AE": 569645.22, "EP-E": 226162.42};
 
 const targetData = {"EP-I": 1642000.00, "FA": 111734725.50, "GMC": 26977269.25, "PA DCP": 5717260.25, "PA AE": 5541994.75, "EP-E": 1252500.00};
 
