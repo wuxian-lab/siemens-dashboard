@@ -189,20 +189,7 @@ tr.total { border-top: 2px solid #0A2540; background: #E6F1FB; font-weight: 700;
 .kpi-duo .kpi-card.highlight { border-width: 2px; }
 .kpi-duo .kpi-sub { font-size: 11px; }
 @media (max-width: 1000px) { .kpi-duo { grid-template-columns: 1fr; } }
-/* SMP 小卡（2026-11-06 用户定）：EP 组三卡等宽（EP 两卡缩小 + SMP 同尺寸），FY27总体 侧不变 */
-.kpi-group.grp-ep.with-smp .kpi-row { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.kpi-group.grp-ep.with-smp .kpi-card { padding: 10px 8px; }
-.kpi-group.grp-ep.with-smp .kpi-label { font-size: 11px; line-height: 1.35; }
-.kpi-group.grp-ep.with-smp .kpi-value { font-size: 18px; }
-.kpi-group.grp-ep.with-smp .kpi-card.highlight .kpi-value { font-size: 20px; }
-.kpi-group.grp-ep.with-smp .kpi-sub { font-size: 10px; line-height: 1.4; }
-.kpi-card.smp-card { border-left: 3px solid #BA7517; }
-.smp-track { display: block; position: relative; height: 8px; margin-top: 8px;
-  background: #EBD9B8; border-radius: 4px; }
-.smp-track i { position: absolute; left: 0; top: 0; height: 100%; border-radius: 4px;
-  background: linear-gradient(90deg, #185FA5, #378ADD); }
-.smp-target { position: absolute; top: -3px; bottom: -3px; width: 0; border-left: 2px dashed #BA7517; }
-@media (max-width: 1000px) { .kpi-group.grp-ep.with-smp .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+/* SMP 内联标签（11:18 用户定）：样式由 SMP_INLINE_STYLE 内联生成，明细区不再单独放进度条。 */
 /* 分季度面板：FY27总体左 / EP右 双栏，各栏内 2x2 季度卡 */
 .quarter-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
 .quarter-duo .quarter-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 10px; }
@@ -236,7 +223,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
 
   <h1>西门子 FY27 全年+本季度考核看板</h1>
 
-  <div class="time">数据更新: 2026-11-06 10:56:22</div>
+  <div class="time">数据更新: 2026-11-06 11:21:48</div>
 
 </div>
 
@@ -248,11 +235,11 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
   <div class="kpi-row">
   <div class="kpi-card year-to">
     <div class="kpi-label">全年指标已完成（FY27总体）</div>
-    <div class="kpi-value">6,393<span style="font-size:16px"> 万</span></div>
+    <div class="kpi-value">6,393<span style="font-size:16px"> 万</span><span style="font-size:12px;font-weight:400;color:#185FA5;margin-left:8px;white-space:nowrap;vertical-align:2px">（SMP 25,334.8 万）</span></div>
   </div>
   <div class="kpi-card year-rate highlight">
     <div class="kpi-label">★ 全年指标完成率（FY27总体）</div>
-    <div class="kpi-value">10.7<span style="font-size:16px"> %</span></div>
+    <div class="kpi-value">10.7<span style="font-size:16px"> %</span><span style="font-size:12px;font-weight:400;color:#185FA5;margin-left:8px;white-space:nowrap;vertical-align:2px">（SMP 完成 1,199.8 万 · 进度 4.7%）</span></div>
     <div class="kpi-sub">完成TO 6,393 万 / 指标 59,988 万</div>
   </div>
   </div>
@@ -282,7 +269,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
           <span class="bu-meta">完成 57 万</span>
         </div>
     </div>
-</div><div class="kpi-group grp-ep with-smp">
+</div><div class="kpi-group grp-ep">
   <div class="kpi-row">
   <div class="kpi-card year-to">
     <div class="kpi-label">全年指标已完成（EP）</div>
@@ -292,12 +279,6 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
     <div class="kpi-label">★ 全年指标完成率（EP）</div>
     <div class="kpi-value">9.0<span style="font-size:16px"> %</span></div>
     <div class="kpi-sub">完成TO 104 万 / 指标 1,158 万</div>
-  </div>
-  <div class="kpi-card smp-card">
-    <div class="kpi-label">SMP 全年进度</div>
-    <div class="kpi-value">4.7<span style="font-size:14px"> %</span></div>
-    <div class="kpi-sub">完成 1,200 万 / 指标 25,335 万</div>
-    <div class="smp-track"><i style="width:4.7%"></i><span class="smp-target" style="left:16.7%"></span></div>
   </div>
   </div>
     <div class="bu-detail">
