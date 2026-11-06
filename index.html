@@ -181,7 +181,10 @@ tr.total { border-top: 2px solid #0A2540; background: #E6F1FB; font-weight: 700;
 .kpi-group-title.grp-nep { background: #185FA5; }
 .kpi-group-title.grp-ep { background: #BA7517; }
 .kpi-duo .kpi-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 10px 0 0; }
-.kpi-duo .kpi-card { padding: 14px 10px; }
+/* 11:46 用户指出「全年指标已完成」两卡没居中：水平方向本就 text-align:center，
+   问题是垂直方向——grid stretch 让同组两卡等高，但没有副标题的第一张卡内容偏上、下方空一大块。
+   统一改用 flex 列布局垂直居中，四卡内容都落在卡片中线上。 */
+.kpi-duo .kpi-card { padding: 14px 10px; display: flex; flex-direction: column; justify-content: center; }
 .kpi-duo .kpi-card.year-to, .kpi-duo .kpi-card.year-rate { grid-column: auto; }
 .kpi-duo .kpi-value { font-size: 22px; }
 .kpi-duo .kpi-card .kpi-value { color: #0A2540; }
@@ -223,7 +226,7 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
 
   <h1>西门子 FY27 全年+本季度考核看板</h1>
 
-  <div class="time">数据更新: 2026-11-06 11:43:02</div>
+  <div class="time">数据更新: 2026-11-06 11:48:22</div>
 
 </div>
 
