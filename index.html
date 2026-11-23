@@ -226,6 +226,92 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
    文字与条之间多出约 24px 空白；列宽固定 => 所有行的条左端仍严格对齐。
    左右两组共用此规则，保持整板节奏一致；不带 .kpi-group 前缀，勿误伤分季度面板。 */
 .kpi-group .bu-detail .bu-name { width: 82px; text-align: left; }
+/* 【2026-11-23】SMP 单独显眼区（可奖金口径）：卡片式 + 面板式两版共用底色 */
+.smp-standalone { margin: 6px 32px 4px; padding: 14px 20px 12px; border-radius: 10px;
+  background: linear-gradient(135deg, #0A2540 0%, #185FA5 100%); color: #fff; box-sizing: border-box; }
+.smp-tag { display: inline-block; font-size: 13px; font-weight: 700; color: #0A2540; background: #FFD98A;
+  padding: 3px 12px; border-radius: 12px; margin-bottom: 10px; }
+.smp-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.smp-card { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.28); border-radius: 8px;
+  padding: 10px 14px; text-align: center; }
+.smp-card.hi { background: #FFD98A; border-color: #FFD98A; }
+.smp-card.hi .smp-label, .smp-card.hi .smp-value { color: #0A2540; }
+.smp-label { font-size: 12px; opacity: 0.9; margin-bottom: 4px; }
+.smp-value { font-size: 24px; font-weight: 700; }
+.smp-value span { font-size: 14px; font-weight: 400; }
+.smp-standalone .smp-track { margin-top: 12px; height: 14px; background: rgba(255,255,255,0.25);
+  border-radius: 7px; position: relative; }
+.smp-standalone .smp-track i { position: absolute; left: 0; top: 0; height: 100%; border-radius: 7px; background: #FFD98A; }
+.smp-standalone .smp-track .bu-target { border-left-color: #fff; }
+.smp-standalone .smp-track .bu-target em { color: #fff; }
+/* 面板式 */
+.smp-panel { margin: 6px 32px 4px; border: 2px solid #BA7517; background: linear-gradient(135deg, #FBF4E7 0%, #fff 100%); }
+.smp-panel h3 { color: #8A5A08; }
+.smp-body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 12px 4px; }
+.smp-num { text-align: center; padding: 8px; }
+.smp-num span { display: block; font-size: 12px; color: #7A8BA3; }
+.smp-num b { font-size: 24px; color: #0A2540; }
+.smp-num.hi b { color: #BA7517; }
+.smp-track { height: 14px; background: #EADFC4; border-radius: 7px; position: relative; margin: 0 4px; }
+.smp-track i { position: absolute; left: 0; top: 0; height: 100%; border-radius: 7px;
+  background: linear-gradient(90deg, #BA7517, #E0A93B); }
+@media (max-width: 1000px) { .smp-cards, .smp-body { grid-template-columns: 1fr; } }
+/* 【2026-11-23 定稿】三组并排：FY27总体 | EP | SMP环形。前两组缩小，配色不变。 */
+.kpi-trio { display: grid; grid-template-columns: 4fr 3fr 3fr; gap: 16px; padding: 20px 32px 6px; align-items: stretch; }
+.kpi-trio > .kpi-duo { display: contents; }   /* 让 FY27总体/EP 两组直接成为 trio 的前两列 */
+@media (max-width: 1200px) { .kpi-trio { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 800px)  { .kpi-trio { grid-template-columns: 1fr; } }
+/* 缩小前两组的卡片（字号/内边距），保持原蓝/琥珀配色 */
+.kpi-trio .kpi-group { padding: 10px 12px; }
+.kpi-trio .kpi-duo .kpi-row { gap: 8px; padding-top: 6px; }
+.kpi-trio .kpi-duo .kpi-card { padding: 10px 8px; }
+.kpi-trio .kpi-duo .kpi-value { font-size: 18px; }
+.kpi-trio .kpi-duo .kpi-card.highlight .kpi-value { font-size: 21px; }
+.kpi-trio .kpi-duo .kpi-label { font-size: 11px; }
+.kpi-trio .kpi-duo .kpi-sub { font-size: 10px; }
+.kpi-trio .kpi-group .bu-detail .bu-row { height: 28px; }
+.kpi-trio .kpi-group .bu-name { width: 70px; font-size: 11px; }
+.kpi-trio .kpi-group .bu-meta { width: 78px; font-size: 10px; }
+/* SMP 环形组：与 EP 同款琥珀底色系（配色不变），琥珀描边突出奖金口径 */
+.smp-dial { background: linear-gradient(135deg, #0A2540 0%, #185FA5 100%); color: #fff; }
+.smp-dial-title { display: inline-block; font-size: 12px; font-weight: 700; color: #0A2540; background: #FFD98A;
+  padding: 3px 12px; border-radius: 12px; margin-bottom: 6px; }
+.smp-dial-body { display: flex; align-items: center; gap: 8px; }
+.smp-ring { flex: none; }
+.ring-smp { font-size: 30px; font-weight: 700; fill: #FFD98A; letter-spacing: 1px; }
+.smp-dial-info { flex: 1; display: grid; grid-template-columns: 1fr; gap: 10px; justify-items: end; }
+.smp-di { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+  width: 66.67%; box-sizing: border-box;
+  padding: 5px 10px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 8px; text-align: center; }
+.smp-di span { font-size: 10px; color: #fff; opacity: 0.9; }
+.smp-di b { font-size: 17px; color: #fff; font-weight: 700; }
+.smp-di.hi { background: #FFD98A; border-color: #FFD98A; }
+.smp-di.hi span, .smp-di.hi b { color: #0A2540; opacity: 1; }
+.smp-dial-track { padding: 16px 4px 2px; width: 66.67%; }
+.smp-dial-track .bu-track { height: 12px; background: rgba(255,255,255,0.25); }
+.smp-dial-track .bu-track i { background: #FFD98A; }
+.smp-dial-track .bu-target { border-left-color: #fff; }
+.smp-dial-track .bu-target em { font-size: 10px; color: #fff; top: -12px; }
+.smp-dial-note { text-align: center; font-size: 10px; color: #fff; opacity: 0.85; margin-top: 6px; }
+@media (max-width: 1000px) { .smp-dial-body { flex-direction: column; gap: 8px; } }
+/* ===== 2026-11-23 领导三方式：口径标签 / 放大亮眼EP+SMP / 精简标题 ===== */
+/* 方式1 label：每张卡顶部口径标签 */
+.grp-scope { font-size: 12px; font-weight: 700; color: #185FA5; background: #E6F1FB;
+  padding: 4px 10px; border-radius: 6px; margin-bottom: 8px; text-align: center; }
+.grp-scope span { color: #3E5265; font-weight: 400; }
+.grp-scope-smp { color: #8A5A08; background: #FFD98A; }
+.grp-scope-smp span { color: #5A3E08; }
+.smp-dial-title span { font-weight: 400; font-size: 11px; }
+/* 方式3 shorttitle：组名提为主标题 */
+.grp-title { font-size: 17px; font-weight: 700; color: #0A2540; text-align: center;
+  padding: 4px 0 8px; border-bottom: 2px solid #378ADD; margin-bottom: 8px; }
+.grp-ep .grp-title { border-bottom-color: #BA7517; }
+.smp-dial .grp-title { color: #fff; border-bottom-color: #FFD98A; }
+/* SMP 卡边框：维持上一版 3px 金描边（2026-11-23 用户定，与 EP 弱化无关，始终生效） */
+.kpi-trio .kpi-group.smp-dial { border: 3px solid #FFD98A; box-shadow: 0 3px 14px rgba(10,37,64,0.28); }
+/* 汇总表 SMP 行（高亮） */
+tr.smp-row td { background: #FFF6E5; font-weight: 700; color: #8A5A08; }
 </style>
 
 </head>
@@ -238,24 +324,25 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
 
   <h1>西门子 FY27 全年+本季度考核看板</h1>
 
-  <div class="time">数据更新: 2026-11-23 09:19:41</div>
+  <div class="time">数据更新: 2026-11-23 11:10:04</div>
 
 </div>
 
 
 
 <!-- KPI 总览（全年维度在前，结论先行；全年进度为高亮头卡） -->
-<div class="kpi-duo">
+<div class="kpi-trio"><div class="kpi-duo">
 <div class="kpi-group grp-nep">
+  <div class="grp-title">FY27总体</div>
   <div class="kpi-row">
   <div class="kpi-card year-to">
-    <div class="kpi-label">全年指标已完成（FY27总体）</div>
-    <div class="kpi-value">9,102<span style="font-size:16px"> 万</span><span style="font-size:12px;font-weight:400;color:#185FA5;margin-left:8px;white-space:nowrap;vertical-align:2px">（SMP 3,299.8 万）</span></div>
+    <div class="kpi-label">全年指标已完成</div>
+    <div class="kpi-value">9,102<span style="font-size:16px"> 万</span></div>
   </div>
   <div class="kpi-card year-rate highlight">
-    <div class="kpi-label">★ 全年指标完成率（FY27总体）</div>
-    <div class="kpi-value">15.2<span style="font-size:16px"> %</span><span style="font-size:12px;font-weight:400;color:#185FA5;margin-left:8px;white-space:nowrap;vertical-align:2px">（SMP 13.0%）</span></div>
-    <div class="kpi-sub">指标 59,988 万（SMP 25,334.8 万）</div>
+    <div class="kpi-label">★ 全年指标完成率</div>
+    <div class="kpi-value">15.2<span style="font-size:16px"> %</span></div>
+    <div class="kpi-sub">指标 59,988 万</div>
   </div>
   </div>
     <div class="bu-detail">
@@ -285,13 +372,14 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
         </div>
     </div>
 </div><div class="kpi-group grp-ep">
+  <div class="grp-title">EP</div>
   <div class="kpi-row">
   <div class="kpi-card year-to">
-    <div class="kpi-label">全年指标已完成（EP）</div>
+    <div class="kpi-label">全年指标已完成</div>
     <div class="kpi-value">191<span style="font-size:16px"> 万</span></div>
   </div>
   <div class="kpi-card year-rate highlight">
-    <div class="kpi-label">★ 全年指标完成率（EP）</div>
+    <div class="kpi-label">★ 全年指标完成率</div>
     <div class="kpi-value">16.5<span style="font-size:16px"> %</span></div>
     <div class="kpi-sub">指标 1,158 万</div>
   </div>
@@ -316,7 +404,30 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
           <span class="bu-meta">完成 40 万</span>
         </div>
     </div>
-</div></div>
+</div></div><div class="kpi-group smp-dial">
+    <div class="grp-title">SMP</div>
+    <div class="smp-dial-body">
+      <div class="smp-ring">
+        <svg viewBox="0 0 196 196" width="196" height="196">
+          <circle cx="98" cy="98" r="82.0" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="14" />
+          <circle cx="98" cy="98" r="82.0" fill="none" stroke="url(#smpGrad)" stroke-width="14"
+                  stroke-dasharray="67.11 515.22" stroke-linecap="round"
+                  transform="rotate(-90 98 98)" />
+          <defs><linearGradient id="smpGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#BA7517"/><stop offset="100%" stop-color="#E0A93B"/>
+          </linearGradient></defs>
+          <text x="98" y="106" text-anchor="middle" class="ring-smp">13.0%</text>
+        </svg>
+      </div>
+      <div class="smp-dial-info">
+        <div class="smp-di"><span>全年指标</span><b>25,334.8 万</b></div>
+        <div class="smp-di"><span>已完成</span><b>3,299.8 万</b></div>
+        <div class="smp-dial-track">
+          <div class="bu-track"><i style="width:13.0%"></i><span class="bu-target" style="left:16.7%"><em>16.7%</em></span></div>
+        </div>
+      </div>
+    </div>
+  </div></div>
 <!-- 全年分季度完成情况（独立分区，头卡保持不动） -->
 <div class="quarter-breakdown">
   <div class="panel">
@@ -463,19 +574,21 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
 
             <th>全年完成率</th>
 
-            <th>本季度指标 (TO)</th>
+            <th>总在途</th>
+
+            <th>总OR</th>
+
+            <th>本季度指标</th>
 
             <th>本季度已完成TO</th>
 
-            <th>本季度OOH</th>
+            <th>本季度在途</th>
 
             <th>本季度预计完成TO</th>
 
             <th>本季度预计完成率</th>
 
-            <th>本季度OOH占比</th>
-
-            <th>本季度 OR</th>
+            <th>本季度OR</th>
 
           </tr>
 
@@ -487,12 +600,13 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
           <td>1,157.8万</td>
           <td>191.0万</td>
           <td class="rate-low">16.5%</td>
+          <td>10.4万</td>
+          <td>184.1万</td>
           <td>289.4万</td>
           <td>191.0万</td>
           <td>10.4万</td>
           <td>201.4万</td>
           <td class="rate-low">69.6%</td>
-          <td>5.2%</td>
           <td>184.1万</td>
         </tr>
         <tr>
@@ -500,12 +614,13 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
           <td>59,988.5万</td>
           <td>9,102.2万</td>
           <td class="rate-low">15.2%</td>
+          <td>7,518.8万</td>
+          <td>13,237.1万</td>
           <td>14,997.1万</td>
           <td>9,102.2万</td>
           <td>4,881.5万</td>
           <td>13,983.7万</td>
           <td class="rate-low">93.2%</td>
-          <td>34.9%</td>
           <td>13,237.1万</td>
         </tr>
         <tr class="bu-detail-row">
@@ -513,12 +628,13 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
           <td>44,714.0万</td>
           <td>7,104.1万</td>
           <td class="rate-low">15.9%</td>
+          <td>4,919.7万</td>
+          <td>9,099.9万</td>
           <td>11,178.5万</td>
           <td>7,104.1万</td>
           <td>3,281.4万</td>
           <td>10,385.5万</td>
           <td class="rate-low">92.9%</td>
-          <td>31.6%</td>
           <td>9,099.9万</td>
         </tr>
         <tr class="bu-detail-row">
@@ -526,12 +642,13 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
           <td>10,770.8万</td>
           <td>1,203.5万</td>
           <td class="rate-low">11.2%</td>
+          <td>543.2万</td>
+          <td>1,503.3万</td>
           <td>2,692.7万</td>
           <td>1,203.5万</td>
           <td>377.5万</td>
           <td>1,581.0万</td>
           <td class="rate-low">58.7%</td>
-          <td>23.9%</td>
           <td>1,503.3万</td>
         </tr>
         <tr class="bu-detail-row">
@@ -539,12 +656,13 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
           <td>2,286.9万</td>
           <td>435.9万</td>
           <td class="rate-low">19.1%</td>
+          <td>173.5万</td>
+          <td>427.5万</td>
           <td>571.7万</td>
           <td>435.9万</td>
           <td>18.7万</td>
           <td>454.6万</td>
           <td class="rate-low">79.5%</td>
-          <td>4.1%</td>
           <td>427.5万</td>
         </tr>
         <tr class="bu-detail-row">
@@ -552,12 +670,13 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
           <td>2,216.8万</td>
           <td>358.7万</td>
           <td class="rate-low">16.2%</td>
+          <td>1,882.3万</td>
+          <td>2,206.4万</td>
           <td>554.2万</td>
           <td>358.7万</td>
           <td>1,203.9万</td>
           <td>1,562.6万</td>
           <td class="rate-high">281.9%</td>
-          <td>77.0%</td>
           <td>2,206.4万</td>
         </tr>
           <tr class="total">
@@ -565,12 +684,13 @@ tr.bu-detail-row td:first-child { padding-left: 18px; font-weight: 600; color: #
             <td>61,146.3万</td>
             <td>9,293.2万</td>
             <td>15.2%</td>
+            <td>7,529.2万</td>
+            <td>13,421.2万</td>
             <td>15,286.6万</td>
             <td>9,293.2万</td>
             <td>4,891.9万</td>
             <td>14,185.1万</td>
             <td>92.8%</td>
-            <td>34.5%</td>
             <td>13,421.2万</td>
           </tr></tbody>
 
